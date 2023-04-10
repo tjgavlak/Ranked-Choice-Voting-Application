@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Issue {
@@ -11,8 +11,8 @@ public class Issue {
     private int ownerId;
     private List<String> choices;
     private String description;
-    private LocalDateTime datePosted;
-    private LocalDateTime dateExpiration;
+    private Timestamp datePosted;
+    private Timestamp dateExpiration;
     private String status;
     private String genreTag;
 
@@ -25,8 +25,8 @@ public class Issue {
         this.ownerId = ownerId;
         this.choices = choices;
         this.description = description;
-        this.datePosted = datePosted;
-        this.dateExpiration = dateExpiration;
+        this.datePosted = Timestamp.valueOf(datePosted);
+        this.dateExpiration = Timestamp.valueOf(dateExpiration);
         this.status = status;
         this.genreTag = genreTag;
     }
@@ -71,19 +71,19 @@ public class Issue {
         this.description = description;
     }
 
-    public LocalDateTime getDatePosted() {
+    public Timestamp getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(LocalDateTime datePosted) {
+    public void setDatePosted(Timestamp datePosted) {
         this.datePosted = datePosted;
     }
 
-    public LocalDateTime getDateExpiration() {
+    public Timestamp getDateExpiration() {
         return dateExpiration;
     }
 
-    public void setDateExpiration(LocalDateTime dateExpiration) {
+    public void setDateExpiration(Timestamp dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
 

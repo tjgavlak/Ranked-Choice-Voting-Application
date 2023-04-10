@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Issue;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface IssueDao {
@@ -10,9 +11,12 @@ public interface IssueDao {
 
     Issue getIssueById(int issueId);
 
-    Issue getIssueByOwnerId(int ownerId);
+    List<Issue> getIssuesByOwnerId(int ownerId);
 
-    Issue getIssueByGenre(String genreTag);
+    List<Issue> getIssuesByGenre(String genreTag);
 
     // get issue by expiration date
+
+    // boolean proposeIssue(String issueName, Principal principal, ...)
+
 }
