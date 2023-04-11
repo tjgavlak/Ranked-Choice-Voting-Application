@@ -12,13 +12,15 @@ public class JdbcChoiceDao implements ChoiceDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    public JdbcIssueDao(JdbcTemplate jdbcTemplate) {
+    public JdbcChoiceDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List<Choice> getAllChoices(int issueId) {
-        List<Choice> results = new ArrayList<>();
-        String sql =
+        return null;
     }
+//        List<Choice> results = new ArrayList<>();
+//        String sql =
+//    }
 }

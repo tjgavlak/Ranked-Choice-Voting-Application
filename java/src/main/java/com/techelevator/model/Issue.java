@@ -1,19 +1,21 @@
 package com.techelevator.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class Issue {
 
     private int issueId;
     private String issueName;
     private int ownerId;
+    private String choice1;
+    private String choice2;
+    private String choice3;
     private String description;
     private Timestamp datePosted;
     private Timestamp dateExpiration;
     private String status;
     private String genreTag;
+
 
     public Issue() {
     }
@@ -24,13 +26,16 @@ public class Issue {
         this.status = status;
     }
 
-    public Issue(int issueId, String issueName, int ownerId, String description, LocalDateTime datePosted, LocalDateTime dateExpiration, String status, String genreTag) {
+    public Issue(int issueId, String issueName, int ownerId, String choice1, String choice2, String choice3, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
+        this.choice1 = choice1;
+        this.choice2 = choice2;
+        this.choice3 = choice3;
         this.description = description;
-        this.datePosted = Timestamp.valueOf(datePosted);
-        this.dateExpiration = Timestamp.valueOf(dateExpiration);
+        this.datePosted = datePosted;
+        this.dateExpiration = dateExpiration;
         this.status = status;
         this.genreTag = genreTag;
     }
@@ -57,6 +62,30 @@ public class Issue {
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getChoice1() {
+        return choice1;
+    }
+
+    public void setChoice1(String choice1) {
+        this.choice1 = choice1;
+    }
+
+    public String getChoice2() {
+        return choice2;
+    }
+
+    public void setChoice2(String choice2) {
+        this.choice2 = choice2;
+    }
+
+    public String getChoice3() {
+        return choice3;
+    }
+
+    public void setChoice3(String choice3) {
+        this.choice3 = choice3;
     }
 
     public String getDescription() {
