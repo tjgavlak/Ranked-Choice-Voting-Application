@@ -20,7 +20,7 @@ public class JdbcIssueDao implements IssueDao {
     @Override
     public List<Issue> getAllIssues() {
             List<Issue> results = new ArrayList<>();
-            String sql = "SELECT issue_name FROM issues;";
+            String sql = "SELECT issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag FROM issues";
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
             while(rowSet.next()){
                 Issue issue = mapRowToIssue(rowSet);
@@ -47,13 +47,12 @@ public class JdbcIssueDao implements IssueDao {
     private Issue mapRowToIssue(SqlRowSet rowSet) {
         Issue issue = new Issue();
         issue.setIssueName(rowSet.getString("issue_name"));
-//        issue.setOwnerId(rowSet.getInt("issue_owner_id"));
-//        issue.setChoices((List<String>) rowSet.getObject("choices"));
-//        issue.setDescription(rowSet.getString("description"));
-//        issue.setDatePosted(rowSet.getTimestamp("date_posted"));
-//        issue.setDateExpiration(rowSet.getTimestamp("expiration_date"));
-//        issue.setStatus(rowSet.getString("status"));
-//        issue.setGenreTag(rowSet.getString("genre_tag"));
+        issue.setOwnerId(rowSet.getInt("issue_owner_id"));
+        issue.setDescription(rowSet.getString("description"));
+        issue.setDatePosted(rowSet.getTimestamp("date_posted"));
+        issue.setDateExpiration(rowSet.getTimestamp("expiration_date"));
+        issue.setStatus(rowSet.getString("status"));
+        issue.setGenreTag(rowSet.getString("genre_tag"));
         return issue;
     }
 }

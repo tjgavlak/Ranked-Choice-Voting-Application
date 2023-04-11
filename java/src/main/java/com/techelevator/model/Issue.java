@@ -9,7 +9,7 @@ public class Issue {
     private int issueId;
     private String issueName;
     private int ownerId;
-    private List<String> choices;
+
     private String description;
     private Timestamp datePosted;
     private Timestamp dateExpiration;
@@ -19,11 +19,11 @@ public class Issue {
     public Issue() {
     }
 
-    public Issue(int issueId, String issueName, int ownerId, List<String> choices, String description, LocalDateTime datePosted, LocalDateTime dateExpiration, String status, String genreTag) {
+    public Issue(int issueId, String issueName, int ownerId, String description, LocalDateTime datePosted, LocalDateTime dateExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
-        this.choices = choices;
+
         this.description = description;
         this.datePosted = Timestamp.valueOf(datePosted);
         this.dateExpiration = Timestamp.valueOf(dateExpiration);
@@ -53,14 +53,6 @@ public class Issue {
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
-    }
-
-    public List<String> getChoices() {
-        return choices;
-    }
-
-    public void setChoices(List<String> choices) {
-        this.choices = choices;
     }
 
     public String getDescription() {

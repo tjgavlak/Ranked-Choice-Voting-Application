@@ -16,13 +16,30 @@ CREATE TABLE issues (
     issue_id SERIAL PRIMARY KEY,
     issue_name VARCHAR(69),
     issue_owner_id INTEGER,
-    choices TEXT [],
     description VARCHAR(420),
     date_posted TIMESTAMP NULL,
     expiration_date TIMESTAMP,
     status VARCHAR(40),
     genre_tag VARCHAR(40),
     CONSTRAINT FK_issue_owner_id FOREIGN KEY(issue_owner_id) REFERENCES users(user_id)
+);
+
+DROP TABLE IF EXISTS choices;
+
+CREATE TABLE choices (
+	issue_id INT,
+	choice_1 VARCHAR (100) NOT NULL,
+	choice_2 VARCHAR (100) NOT NULL,
+	choice_3 VARCHAR (100),
+	choice_4 VARCHAR (100),
+	choice_5 VARCHAR (100),
+	choice_6 VARCHAR (100),
+	choice_7 VARCHAR (100),
+	choice_8 VARCHAR (100),
+	choice_9 VARCHAR (100),
+	choice_10 VARCHAR (100),
+	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
+
 );
 
 COMMIT TRANSACTION;
