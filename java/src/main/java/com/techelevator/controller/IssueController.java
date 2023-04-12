@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.IssueDao;
+import com.techelevator.dao.IssueDetailsDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Issue;
+import com.techelevator.model.IssueDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +16,11 @@ import java.util.List;
 public class IssueController {
 
     private IssueDao issueDao;
-    private UserDao userDao;
+    private IssueDetailsDao issueDetailsDao;
 
-    public IssueController(IssueDao issueDao, UserDao userDao) {
+    public IssueController(IssueDao issueDao, IssueDetailsDao issueDetailsDao) {
         this.issueDao = issueDao;
-        this.userDao = userDao;
+        this.issueDetailsDao = issueDetailsDao;
     }
 
     @GetMapping("/issues")
@@ -27,11 +29,11 @@ public class IssueController {
     }
 
     @GetMapping("/issues/{issueId}")
-    public Issue getIssueById(int issueId) {
-        return this.issueDao.getIssueById(issueId);
+    public IssueDetails getIssueById(int issueId) {
+        return this.issueDetailsDao.getIssueById(issueId);
     }
 
-    @GetMapping("/issues/{ownerId}")
+/*    @GetMapping("/issues/{ownerId}")
     public List<Issue> getIssuesByOwnerId(int ownerId) {
         return this.issueDao.getIssuesByOwnerId(ownerId);
     }
@@ -39,7 +41,7 @@ public class IssueController {
     @GetMapping("/issues/{genreTag}")
     public List<Issue> getIssuesByGenre(String genreTag) {
         return this.issueDao.getIssuesByGenre(genreTag);
-    }
+    }*/
 
 // TODO finish this later
 

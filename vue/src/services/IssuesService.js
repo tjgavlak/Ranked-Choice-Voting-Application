@@ -8,5 +8,4 @@ export default {
     list() {
         return http.get('/issues')
     }
-    
 }

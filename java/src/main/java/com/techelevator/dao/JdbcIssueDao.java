@@ -29,9 +29,9 @@ public class JdbcIssueDao implements IssueDao {
             return results;
     }
 
-    @Override
+/*    @Override
     public Issue getIssueById(int issueId) {
-/*        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, " +
+*//*        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, " +
                 "choices.choice_1, " +
                 "choices.choice_2, " +
                 "choices.choice_3, " +
@@ -42,7 +42,7 @@ public class JdbcIssueDao implements IssueDao {
                 "choices.choice_8, " +
                 "choices.choice_9, " +
                 "choices.choice_10 " +
-                "FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = ?;";*/
+                "FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = ?;";*//*
         return null;
     }
 
@@ -54,10 +54,11 @@ public class JdbcIssueDao implements IssueDao {
     @Override
     public List<Issue> getIssuesByGenre(String genreTag) {
         return null;
-    }
+    }*/
 
-    private Issue mapRowToIssue(SqlRowSet rowSet) {
+/*    private Issue mapRowToIssueDetails(SqlRowSet rowSet) {
         Issue issue = new Issue();
+        issue.setIssueId(rowSet.getInt("issue_id"));
         issue.setIssueName(rowSet.getString("issue_name"));
         issue.setOwnerId(rowSet.getInt("issue_owner_id"));
         issue.setDescription(rowSet.getString("description"));
@@ -75,6 +76,13 @@ public class JdbcIssueDao implements IssueDao {
             }
         }
         issue.setChoices(choices);
+        return issue;
+    }*/
+    private Issue mapRowToIssue(SqlRowSet rowSet) {
+        Issue issue = new Issue();
+        issue.setIssueId(rowSet.getInt("issue_id"));
+        issue.setIssueName(rowSet.getString("issue_name"));
+        issue.setDescription(rowSet.getString("description"));
         return issue;
     }
 }

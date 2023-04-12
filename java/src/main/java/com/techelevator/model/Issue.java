@@ -7,28 +7,28 @@ public class Issue {
 
     private int issueId;
     private String issueName;
-    private int ownerId;
-   /* private String choice1;
+/*    private int ownerId;
+    private String choice1;
     private String choice2;
-    private String choice3;*/
-    private List<String> choices;
+    private String choice3;
+    private List<String> choices;*/
     private String description;
-    private Timestamp datePosted;
+/*    private Timestamp datePosted;
     private Timestamp dateExpiration;
     private String status;
-    private String genreTag;
+    private String genreTag;*/
 
 
     public Issue() {
     }
 
-    public Issue(int issueId, String issueName, String status) {
+    public Issue(int issueId, String issueName, String description) {
         this.issueId = issueId;
         this.issueName = issueName;
-        this.status = status;
+        this.description = description;
     }
 
-    public Issue(int issueId, String issueName, int ownerId, List<String> choices, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
+    /*public Issue(int issueId, String issueName, int ownerId, List<String> choices, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
@@ -38,7 +38,7 @@ public class Issue {
         this.dateExpiration = dateExpiration;
         this.status = status;
         this.genreTag = genreTag;
-    }
+    }*/
 
     /*  public Issue(int issueId, String issueName, int ownerId, String choice1, String choice2, String choice3, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
             this.issueId = issueId;
@@ -70,13 +70,13 @@ public class Issue {
         this.issueName = issueName;
     }
 
-    public int getOwnerId() {
+/*    public int getOwnerId() {
         return ownerId;
     }
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
-    }
+    }*/
 
 /*    public String getChoice1() {
         return choice1;
@@ -110,7 +110,7 @@ public class Issue {
         this.description = description;
     }
 
-    public Timestamp getDatePosted() {
+/*    public Timestamp getDatePosted() {
         return datePosted;
     }
 
@@ -148,5 +148,5 @@ public class Issue {
 
     public void setChoices(List<String> choices) {
         this.choices = choices;
-    }
+    }*/
 }
