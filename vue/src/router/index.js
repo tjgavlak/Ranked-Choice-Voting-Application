@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import ActiveIssues from '../views/ActiveIssues.vue'
+import IssueDetails from '../views/IssueDetails.vue'
+import ProposeIssue from '../views/ProposeIssue.vue'
 
 Vue.use(Router)
 
@@ -62,6 +64,22 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/issues/active/:id",
+      name: "issue-details",
+      component: IssueDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/proposal",
+      name: "proposal-form",
+      component: ProposeIssue,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 

@@ -7,5 +7,8 @@ const http = axios.create({
 export default {
     list() {
         return http.get('/issues')
+    },
+    details(id) {
+        return http.get(`/issues/${id}`)
     }
 }

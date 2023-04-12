@@ -13,7 +13,7 @@
           <td class="issue-name">{{ issue.issueName }}</td>
           <td class="issue-description">{{ issue.description }}</td>
           <td>
-            <button>Vote!</button> //Add v-bind
+            <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
         </tr>
 
@@ -46,6 +46,11 @@ export default {
   data() {
     return {
       issues: [],
+      issue: {
+        issueId: "",
+        issueName: "",
+        description: ""
+      }
     };
   },
   created() {
@@ -59,6 +64,9 @@ export default {
         this.issues = response.data;
       });
     },
+    viewIssue(id) {
+      this.$router.push(`/issues/active/${id}`)
+    }
   },
 };
 </script>

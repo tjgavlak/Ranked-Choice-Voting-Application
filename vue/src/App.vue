@@ -2,14 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'active-issues' }"
-        >Active Issues</router-link
-      >
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'active-issues' }">Active Issues</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'proposal-form' }">Propose an Issue</router-link>
     </div>
     <router-view />
   </div>
