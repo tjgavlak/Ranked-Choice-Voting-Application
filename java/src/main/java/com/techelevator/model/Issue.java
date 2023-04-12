@@ -1,15 +1,17 @@
 package com.techelevator.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Issue {
 
     private int issueId;
     private String issueName;
     private int ownerId;
-    private String choice1;
+   /* private String choice1;
     private String choice2;
-    private String choice3;
+    private String choice3;*/
+    private List<String> choices;
     private String description;
     private Timestamp datePosted;
     private Timestamp dateExpiration;
@@ -26,13 +28,11 @@ public class Issue {
         this.status = status;
     }
 
-    public Issue(int issueId, String issueName, int ownerId, String choice1, String choice2, String choice3, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
+    public Issue(int issueId, String issueName, int ownerId, List<String> choices, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
-        this.choice1 = choice1;
-        this.choice2 = choice2;
-        this.choice3 = choice3;
+        this.choices = choices;
         this.description = description;
         this.datePosted = datePosted;
         this.dateExpiration = dateExpiration;
@@ -40,6 +40,20 @@ public class Issue {
         this.genreTag = genreTag;
     }
 
+    /*  public Issue(int issueId, String issueName, int ownerId, String choice1, String choice2, String choice3, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
+            this.issueId = issueId;
+            this.issueName = issueName;
+            this.ownerId = ownerId;
+            this.choice1 = choice1;
+            this.choice2 = choice2;
+            this.choice3 = choice3;
+            this.description = description;
+            this.datePosted = datePosted;
+            this.dateExpiration = dateExpiration;
+            this.status = status;
+            this.genreTag = genreTag;
+        }
+    */
     public int getIssueId() {
         return issueId;
     }
@@ -64,7 +78,7 @@ public class Issue {
         this.ownerId = ownerId;
     }
 
-    public String getChoice1() {
+/*    public String getChoice1() {
         return choice1;
     }
 
@@ -86,7 +100,7 @@ public class Issue {
 
     public void setChoice3(String choice3) {
         this.choice3 = choice3;
-    }
+    }*/
 
     public String getDescription() {
         return description;
@@ -126,5 +140,13 @@ public class Issue {
 
     public void setGenreTag(String genreTag) {
         this.genreTag = genreTag;
+    }
+
+    public List<String> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(List<String> choices) {
+        this.choices = choices;
     }
 }

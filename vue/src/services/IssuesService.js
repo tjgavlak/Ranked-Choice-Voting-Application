@@ -5,7 +5,6 @@ const http = axios.create({
 });
 
 export default {
-
     list() {
         return http.get('/issues')
     }

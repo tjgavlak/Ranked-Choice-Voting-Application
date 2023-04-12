@@ -1,22 +1,21 @@
 <template>
-<IssuesList />
+  <IssuesList />
 </template>
 
 <script>
-import IssuesList from '../components/IssuesList.vue'
+import IssuesList from "@/components/IssuesList";
 
 export default {
-    name: 'active-issues',
-    
-        IssuesListdata(){
-        return {
-            name: '',
-            status: '',
-            issues: []
-        }
-    },
-
-    methods: {
-    }
-}
+  name: "active-issues",
+  data() {
+    return {
+      name: "",
+      description: "",
+      issues: [],
+    };
+  },
+  components: {
+    IssuesList,
+  },
+};
 </script>

@@ -7,17 +7,17 @@ COMMIT TRANSACTION;
 
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, choice_1, choice_2, choice_3, date_posted, expiration_date, status, genre_tag)
-VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', 'hamstr', 'pond', 'tree', '2023-04-10 11:30:00', '2023-04-15 11:30:00', 'active', 'genre_1');
+(issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag)
+VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', '2023-04-10 11:30:00', '2023-04-15 11:30:00', 'active', 'genre_1');
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, choice_1, choice_2, choice_3, date_posted, expiration_date, status, genre_tag)
-VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', 'bible', 'ham', 'infinite ham', '2023-04-10 11:30:00', '2023-04-29 11:30:00', 'active', 'genre_2');
+(issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag)
+VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', '2023-04-10 11:30:00', '2023-04-29 11:30:00', 'active', 'genre_2');
 
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, choice_1, choice_2, choice_3, date_posted, expiration_date, status, genre_tag)
-VALUES ('Park amenities', 1, 'Rank what you want at the park', 'fountain', 'bench', 'shrub', '2023-04-10 11:30:00', '2023-04-29 11:30:00', 'active', 'genre_3');
+(issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag)
+VALUES ('Park amenities', 1, 'Rank what you want at the park', '2023-04-10 11:30:00', '2023-04-29 11:30:00', 'active', 'genre_3');
 
 
 INSERT INTO choices
