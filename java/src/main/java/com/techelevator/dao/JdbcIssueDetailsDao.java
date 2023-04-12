@@ -33,8 +33,11 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
                 "choices.choice_9, " +
                 "choices.choice_10 " +
                 "FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
-        results = mapRowToIssueDetails(rowSet);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
+        if (rowSet.next()) {
+            results = mapRowToIssueDetails(rowSet);
+        }
+
         return results;
     }
 

@@ -29,7 +29,7 @@ public class IssueController {
     }
 
     @GetMapping("/issues/{issueId}")
-    public IssueDetails getIssueById(int issueId) {
+    public IssueDetails getIssueById(@PathVariable int issueId) {
         return this.issueDetailsDao.getIssueById(issueId);
     }
 
