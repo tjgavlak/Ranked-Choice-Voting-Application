@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetails;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -21,7 +23,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public IssueDetails getIssueById(int issueId) {
         IssueDetails results = new IssueDetails();
-        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, " +
+        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag, " +
                 "choices.choice_1, " +
                 "choices.choice_2, " +
                 "choices.choice_3, " +
@@ -41,12 +43,39 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return results;
     }
 
+    @Override
+    public boolean postIssue(IssueDetails issue) {
+        IssueDetails results = new IssueDetails();
+        String sql = "BEGIN TRANSACTION " +
+                "INSERT INTO issues " +
+                "(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag) " +
+                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), NULL, NULL, 'pending', ?);"
+
+                //second insert statement for choices
+
+                ;
+
+        try {
+            jdbcTemplate.update(sql, IssueDetails.class, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
+        } catch (DataAccessException e) {
+            return false;
+        }
+        return true;
+    };
+//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
+//        while(rowSet.next()){
+//            results = mapRowToIssueDetails(rowSet);
+//        }
+//        return results;
+//    }
+
     private IssueDetails mapRowToIssueDetails(SqlRowSet rowSet) {
         IssueDetails issueDetails = new IssueDetails();
         issueDetails.setIssueId(rowSet.getInt("issue_id"));
         issueDetails.setIssueName(rowSet.getString("issue_name"));
         issueDetails.setOwnerId(rowSet.getInt("issue_owner_id"));
         issueDetails.setDescription(rowSet.getString("description"));
+        issueDetails.setDateProposed(rowSet.getTimestamp("date_proposed"));
         issueDetails.setDatePosted(rowSet.getTimestamp("date_posted"));
         issueDetails.setDateExpiration(rowSet.getTimestamp("expiration_date"));
         issueDetails.setStatus(rowSet.getString("status"));

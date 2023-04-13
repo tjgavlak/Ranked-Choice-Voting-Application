@@ -17,6 +17,7 @@ CREATE TABLE issues (
     issue_name VARCHAR(69),
     issue_owner_id INTEGER,
     description VARCHAR(420),
+    date_proposed TIMESTAMP NULL,
     date_posted TIMESTAMP NULL,
     expiration_date TIMESTAMP,
     status VARCHAR(40),

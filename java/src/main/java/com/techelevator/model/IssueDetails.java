@@ -9,6 +9,7 @@ public class IssueDetails {
     private int ownerId;
     private List<String> choices;
     private String description;
+    private Timestamp dateProposed;
     private Timestamp datePosted;
     private Timestamp dateExpiration;
     private String status;
@@ -17,12 +18,13 @@ public class IssueDetails {
     public IssueDetails() {
     }
 
-    public IssueDetails(int issueId, String issueName, int ownerId, List<String> choices, String description, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
+    public IssueDetails(int issueId, String issueName, int ownerId, List<String> choices, String description, Timestamp dateProposed, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
         this.choices = choices;
         this.description = description;
+        this.dateProposed = dateProposed;
         this.datePosted = datePosted;
         this.dateExpiration = dateExpiration;
         this.status = status;
@@ -67,6 +69,14 @@ public class IssueDetails {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Timestamp getDateProposed() {
+        return dateProposed;
+    }
+
+    public void setDateProposed(Timestamp dateProposed) {
+        this.dateProposed = dateProposed;
     }
 
     public Timestamp getDatePosted() {

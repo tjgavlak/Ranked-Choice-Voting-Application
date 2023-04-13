@@ -6,11 +6,13 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetails;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
 
+@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class IssueController {
@@ -33,22 +35,10 @@ public class IssueController {
         return this.issueDetailsDao.getIssueById(issueId);
     }
 
-/*    @GetMapping("/issues/{ownerId}")
-    public List<Issue> getIssuesByOwnerId(int ownerId) {
-        return this.issueDao.getIssuesByOwnerId(ownerId);
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/issues")
+    public boolean proposeNewIssue(@RequestBody IssueDetails issue) {
+        return issueDetailsDao.postIssue(issue);
     }
-
-    @GetMapping("/issues/{genreTag}")
-    public List<Issue> getIssuesByGenre(String genreTag) {
-        return this.issueDao.getIssuesByGenre(genreTag);
-    }*/
-
-// TODO finish this later
-
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PostMapping("/issues/new")
-//    public boolean proposeNewIssue(Issue issue, Principal principal) {
-//        int ownerId = userDao.findIdByUsername(principal.getName());
-//        boolean issueProposed = issueDao.
-//    }
 }

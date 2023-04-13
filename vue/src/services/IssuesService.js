@@ -10,5 +10,8 @@ export default {
     },
     details(id) {
         return http.get(`/issues/${id}`)
+    },
+    submitForm(payload) {
+        return http.post(`/issues`, payload)
     }
 }
