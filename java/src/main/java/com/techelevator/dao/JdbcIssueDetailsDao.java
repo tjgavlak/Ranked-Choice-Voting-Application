@@ -4,9 +4,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetails;
 import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +52,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         String sql = "BEGIN TRANSACTION " +
                 "INSERT INTO issues " +
                 "(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag) " +
-                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), NULL, NULL, 'pending', ?);"
-
-                //second insert statement for choices
-
-                ;
-
+                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), NULL, NULL, 'pending', ?);";
         try {
             jdbcTemplate.update(sql, IssueDetails.class, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
         } catch (DataAccessException e) {
@@ -68,6 +66,41 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
 //        }
 //        return results;
 //    }
+
+    @Override
+    public int queryForIssueId() {
+        int issueId = 0;
+        String sql = "SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        if (rowSet.next()) {
+            issueId = mapRowToIssueDetails(rowSet).getIssueId();
+        }
+        return issueId;
+    }
+
+    @Override
+    public boolean postChoice(int issueId, String choice) {
+        boolean success = false;
+        String sql = "INSERT INTO choices (issue_id) VALUES ?;";
+        try {
+            jdbcTemplate.update(sql, issueId);
+            success = true;
+        } catch (DataAccessException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nope", e);
+        }
+        return success;
+    }
+
+    @Override
+    public boolean updateChoices(String choiceString) {
+        String[] splitStringArray = choiceString.split(",");
+
+        boolean success = false;
+        String sql = "UPDATE choices SET choice_1 = ?";
+        return success;
+    }
+
+
 
     private IssueDetails mapRowToIssueDetails(SqlRowSet rowSet) {
         IssueDetails issueDetails = new IssueDetails();

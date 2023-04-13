@@ -28,20 +28,13 @@ CREATE TABLE issues (
 DROP TABLE IF EXISTS choices;
 
 CREATE TABLE choices (
+	choice_id SERIAL PRIMARY KEY,
 	issue_id INT,
-	choice_1 VARCHAR (100) NOT NULL,
-	choice_2 VARCHAR (100) NOT NULL,
-	choice_3 VARCHAR (100),
-	choice_4 VARCHAR (100),
-	choice_5 VARCHAR (100),
-	choice_6 VARCHAR (100),
-	choice_7 VARCHAR (100),
-	choice_8 VARCHAR (100),
-	choice_9 VARCHAR (100),
-	choice_10 VARCHAR (100),
+	choice VARCHAR (100),
 	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
-
 );
+
+
 
 COMMIT TRANSACTION;
 
