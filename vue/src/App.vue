@@ -4,7 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'active-issues' }">Active Issues</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'proposal-form' }">Propose an Issue</router-link>
+      <router-link v-bind:to="{ name: 'proposal-form' }">Post an Issue</router-link>
     </div>
     <router-view />
   </div>
@@ -16,22 +16,22 @@
 
 body {
   background-color: #18453b;
-  color: #ffffff;
+  color: #fff;
   font-family: "Quicksand", sans-serif;
   font-size: 1.2em;
 }
 
 #nav {
-  color: #ffffff;
+  color: #fff;
 }
 
 a {
-  color: #F4bb4e;
+  color: #5e9186;
   text-decoration: none;
 }
 
 a:hover {
-  text-shadow: 1px 1px 5px #eaeaea;
+  text-shadow: 1px 1px 5px #fff;
 }
 
 header {

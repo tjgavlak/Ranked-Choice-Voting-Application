@@ -1,11 +1,9 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ChoiceDao;
-import com.techelevator.dao.IssueDao;
 import com.techelevator.dao.IssueDetailsDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Choice;
-import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,19 +17,23 @@ import java.util.List;
 @CrossOrigin
 public class IssueController {
 
-    private IssueDao issueDao;
+
     private IssueDetailsDao issueDetailsDao;
     private ChoiceDao choiceDao;
 
-    public IssueController(IssueDao issueDao, IssueDetailsDao issueDetailsDao, ChoiceDao choiceDao) {
-        this.issueDao = issueDao;
+    public IssueController(IssueDetailsDao issueDetailsDao, ChoiceDao choiceDao) {
         this.issueDetailsDao = issueDetailsDao;
         this.choiceDao = choiceDao;
     }
 
-    @GetMapping("/issues")
-    public List<Issue> getAllIssues() {
-        return this.issueDao.getAllIssues();
+    @GetMapping("/issues/active")
+    public List<IssueDetails> getAllActiveIssues() {
+        return this.issueDetailsDao.getAllActiveIssues();
+    }
+
+    @GetMapping("/issues/pending")
+    public List<IssueDetails> getAllPendingIssues() {
+        return this.issueDetailsDao.getAllPendingIssues();
     }
 
     @GetMapping("/issues/{issueId}")
@@ -43,7 +45,6 @@ public class IssueController {
     public List <Choice> getAllChoicesById(@PathVariable int issueId) {
         return this.choiceDao.getAllChoices(issueId);
     }
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/issues")

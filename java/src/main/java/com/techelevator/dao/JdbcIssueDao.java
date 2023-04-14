@@ -1,3 +1,4 @@
+/*
 package com.techelevator.dao;
 
 import com.techelevator.model.Issue;
@@ -18,9 +19,9 @@ public class JdbcIssueDao implements IssueDao {
     }
 
     @Override
-    public List<Issue> getAllIssues() {
+    public List<Issue> getAllPendingIssues() {
             List<Issue> results = new ArrayList<>();
-            String sql = "SELECT issue_id, issue_name, description FROM issues;";
+            String sql = "SELECT issue_id, issue_name, description FROM issues WHERE status = 'pending';";
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
             while(rowSet.next()){
                 Issue issue = mapRowToIssue(rowSet);
@@ -29,9 +30,24 @@ public class JdbcIssueDao implements IssueDao {
             return results;
     }
 
+    @Override
+    public List<Issue> getAllActiveIssues() {
+        List<Issue> results = new ArrayList<>();
+        String sql = "SELECT issue_id, issue_name, description FROM issues WHERE status = 'active';";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while(rowSet.next()){
+            Issue issue = mapRowToIssue(rowSet);
+            results.add(issue);
+        }
+        return results;
+    }
+
+*/
 /*    @Override
     public Issue getIssueById(int issueId) {
-*//*        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, " +
+*//*
+*/
+/*        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, " +
                 "choices.choice_1, " +
                 "choices.choice_2, " +
                 "choices.choice_3, " +
@@ -43,6 +59,8 @@ public class JdbcIssueDao implements IssueDao {
                 "choices.choice_9, " +
                 "choices.choice_10 " +
                 "FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = ?;";*//*
+*/
+/*
         return null;
     }
 
@@ -54,8 +72,10 @@ public class JdbcIssueDao implements IssueDao {
     @Override
     public List<Issue> getIssuesByGenre(String genreTag) {
         return null;
-    }*/
+    }*//*
 
+
+*/
 /*    private Issue mapRowToIssueDetails(SqlRowSet rowSet) {
         Issue issue = new Issue();
         issue.setIssueId(rowSet.getInt("issue_id"));
@@ -77,7 +97,8 @@ public class JdbcIssueDao implements IssueDao {
         }
         issue.setChoices(choices);
         return issue;
-    }*/
+    }*//*
+
     private Issue mapRowToIssue(SqlRowSet rowSet) {
         Issue issue = new Issue();
         issue.setIssueId(rowSet.getInt("issue_id"));
@@ -86,3 +107,4 @@ public class JdbcIssueDao implements IssueDao {
         return issue;
     }
 }
+*/

@@ -1,7 +1,6 @@
 package com.techelevator.model;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 public class IssueDetails {
     private int issueId;

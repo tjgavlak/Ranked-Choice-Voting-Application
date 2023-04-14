@@ -1,17 +1,17 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/image.png"></header>
+    <header><img src="@/assets/image.png" /></header>
     <table>
       <thead>
         <tr>
           <th>Issues</th>
-          <th>Description</th>
+          <th>Poll Closes</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="issue in issues" :key="issue.issueId">
           <td class="issue-name">{{ issue.issueName }}</td>
-          <td class="issue-description">{{ issue.description }}</td>
+          <td class="expiration-date">{{ formatDate(issue.dateExpiration) }}</td>
           <td>
             <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
@@ -49,24 +49,47 @@ export default {
       issue: {
         issueId: "",
         issueName: "",
-        description: ""
-      }
+        description: "",
+        dateExpiration: "",
+      },
     };
   },
   created() {
-    issuesService.list().then((response) => {
+    issuesService.listActive().then((response) => {
       this.issues = response.data;
     });
   },
   methods: {
     loadIssues() {
-      issuesService.list().then((response) => {
+      issuesService.listActive().then((response) => {
         this.issues = response.data;
       });
     },
     viewIssue(id) {
-      this.$router.push(`/issues/active/${id}`)
+      this.$router.push(`/issues/active/${id}`);
+    },
+    formatDate(date) {
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    const formatted = month + '/' + day + '/' + year + ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    return formatted;
     }
+    // formatDate(jsonDate) {
+    //   jsonDate = this.issue.dateExpiration;
+    //   const date = new Date(jsonDate);
+    //   const formattedDate = `${date.getFullYear()}-${
+    //     date.getMonth() + 1
+    //   }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+    //   return formattedDate;
+    // },
   },
 };
 </script>

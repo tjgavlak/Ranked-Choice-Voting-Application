@@ -1,16 +1,10 @@
 package com.techelevator.dao;
 
-
-import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetails;
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +43,33 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         }
         return true;
     };
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
-//        while(rowSet.next()){
-//            results = mapRowToIssueDetails(rowSet);
-//        }
-//        return results;
-//    }
+
+
+    @Override
+    public List<IssueDetails> getAllPendingIssues() {
+        List<IssueDetails> results = new ArrayList<>();
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'pending';";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while(rowSet.next()){
+            IssueDetails issue = mapRowToIssueDetails(rowSet);
+            results.add(issue);
+        }
+        return results;
+    }
+
+    @Override
+    public List<IssueDetails> getAllActiveIssues() {
+        List<IssueDetails> results = new ArrayList<>();
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'active';";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while(rowSet.next()){
+            IssueDetails issue = mapRowToIssueDetails(rowSet);
+            results.add(issue);
+        }
+        return results;
+    }
+
+
 
     @Override
     public int queryForIssueId() {

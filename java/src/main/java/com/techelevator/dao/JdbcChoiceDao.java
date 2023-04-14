@@ -1,7 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Choice;
-import com.techelevator.model.Issue;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;

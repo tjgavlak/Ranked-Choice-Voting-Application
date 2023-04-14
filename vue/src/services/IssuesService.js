@@ -5,8 +5,11 @@ const http = axios.create({
 });
 
 export default {
-    list() {
-        return http.get('/issues')
+    listActive() {
+        return http.get('/issues/active')
+    },
+    listPending() {
+        return http.get('/issues/pending')
     },
     details(id) {
         return http.get(`/issues/${id}`)
