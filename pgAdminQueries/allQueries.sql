@@ -38,7 +38,8 @@ CREATE TABLE issues (
     issue_owner_id INTEGER,
     description VARCHAR(420),
     date_posted TIMESTAMP NULL,
-    expiration_date TIMESTAMP,
+    expiration_date DATE,
+	expiration_time TIME,
     status VARCHAR(40),
     genre_tag VARCHAR(40),
     CONSTRAINT FK_issue_owner_id FOREIGN KEY(issue_owner_id) REFERENCES users(user_id)
@@ -96,6 +97,10 @@ SELECT choice, points FROM choices WHERE issue_id = 1;
 SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = 1;
 
 SELECT * FROM issues;
+
+SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'pending';
+
+SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'active';
 
 
 

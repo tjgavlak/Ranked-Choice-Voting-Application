@@ -1,12 +1,13 @@
 <template>
   <div class="proposal-form">
-    <h1>Post an New Issue:</h1>
+    <h1>Post a New Issue:</h1>
     <h2>
       This form allows you to create a new issue to be voted on. Name and
       description are required. You may set a poll closing time or leave it
       blank and add it at a later date. Your choices can be added on the next
       page.
     </h2>
+    <br /><br /><br />
     <form v-on:submit="saveForm">
       <label for="issue-name">Issue Name*</label><br />
       <input
@@ -68,13 +69,27 @@ export default {
 </script>
 
 <style scoped>
+body {
+  background-color: deeppink;
+}
+
 #required {
+  color: #f8f5f1;
   font-size: 0.7em;
   font-style: italic;
 }
 
 h2 {
+  color: #00274c;
   font-size: 0.9em;
   font-weight: normal;
+}
+
+label {
+  color: #f8f5f1;
+}
+
+h1 {
+  color: #00274c;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/image.png" /></header>
+    <header><img src="@/assets/FTR_Black.png" /></header><br><br>
     <table>
       <thead>
         <tr>
@@ -10,9 +10,9 @@
       </thead>
       <tbody>
         <tr v-for="issue in issues" :key="issue.issueId">
-          <td class="issue-name">{{ issue.issueName }}</td>
-          <td class="expiration-date">{{ formatDate(issue.dateExpiration) }}</td>
-          <td>
+          <td class="issue-name">{{ issue.issueName }}&nbsp;&nbsp;&nbsp;</td>
+          <td class="expiration-date">&nbsp;&nbsp;&nbsp;{{ formatDate(issue.dateExpiration) }}</td>
+          <td>&nbsp;&nbsp;
             <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
         </tr>
@@ -87,5 +87,11 @@ export default {
 </script>
 
 <style scoped>
+th {
+  color: #f8f5f1;;
+}
 
+td {
+  color: #f8f5f1;
+}
 </style>
