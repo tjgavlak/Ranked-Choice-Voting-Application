@@ -2,9 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'active-issues' }">Active Issues</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'proposal-form' }">Post an Issue</router-link>
+      <router-link v-bind:to="{ name: 'proposal-form' }">Post an Issue</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
   </div>
@@ -16,13 +16,13 @@
 
 body {
   background-color: #18453b;
-  color: #fff;
+  color: #f8f5f1;
   font-family: "Quicksand", sans-serif;
   font-size: 1.2em;
 }
 
 #nav {
-  color: #fff;
+  color: #3d5e57;
 }
 
 a {

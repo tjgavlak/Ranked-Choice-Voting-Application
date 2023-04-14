@@ -29,7 +29,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -73,7 +73,7 @@ const router = new Router({
       }
     },
     {
-      path: "/proposal",
+      path: "/issues",
       name: "proposal-form",
       component: ProposeIssue,
       meta: {

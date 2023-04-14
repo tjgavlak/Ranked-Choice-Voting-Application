@@ -4,8 +4,8 @@
     <table>
       <thead>
         <tr>
-          <th>Issues</th>
-          <th>Poll Closes</th>
+          <th id="issues">Issues</th>
+          <th id="poll-close">Poll Closes</th>
         </tr>
       </thead>
       <tbody>
@@ -82,14 +82,10 @@ export default {
     const formatted = month + '/' + day + '/' + year + ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     return formatted;
     }
-    // formatDate(jsonDate) {
-    //   jsonDate = this.issue.dateExpiration;
-    //   const date = new Date(jsonDate);
-    //   const formattedDate = `${date.getFullYear()}-${
-    //     date.getMonth() + 1
-    //   }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
-    //   return formattedDate;
-    // },
   },
 };
 </script>
+
+<style scoped>
+
+</style>

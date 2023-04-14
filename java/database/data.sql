@@ -11,23 +11,21 @@ COMMIT TRANSACTION;
 
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
-VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0) + INTERVAL '2 days', 'active', 'genre_1');
+(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
+VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'active', 'genre_1');
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
-VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0) + INTERVAL '2 days', 'active', 'genre_2');
-
+(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
+VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'active', 'genre_2');
 
 INSERT INTO issues
-(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
-VALUES ('Park amenities', 1, 'Rank what you want at the park', CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0) + INTERVAL '2 days', 'active', 'genre_3');
+(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
+VALUES ('Park amenities', 1, 'Rank what you want at the park', CURRENT_TIMESTAMP(0), '04/16/23',  '04:00 PM', 'active', 'genre_3');
 
 
 INSERT INTO choices(issue_id, choice) VALUES (1, 'park');
 INSERT INTO choices(issue_id, choice) VALUES (1, 'tree');
 INSERT INTO choices(issue_id, choice) VALUES (1, 'garage');
-
 INSERT INTO choices(issue_id, choice) VALUES (2, 'Dictionary');
 INSERT INTO choices(issue_id, choice) VALUES (2, 'Thesaurus');
 INSERT INTO choices(issue_id, choice) VALUES (2, 'BootcampOS');

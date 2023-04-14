@@ -1,14 +1,14 @@
 <template>
-  <ProposalForm />
+  <FirstIssueForm />
 </template>
 
 <script>
-import ProposalForm from "@/components/ProposalForm";
+import FirstIssueForm from "@/components/FirstIssueForm";
 
 export default {
-    name: "proposal-form",
+    name: "issue-form",
     components: {
-        ProposalForm
+        FirstIssueForm
     }
 }
 </script>

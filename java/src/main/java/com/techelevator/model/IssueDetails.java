@@ -1,29 +1,31 @@
 package com.techelevator.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class IssueDetails {
     private int issueId;
     private String issueName;
     private int ownerId;
     private String description;
-    private Timestamp dateProposed;
     private Timestamp datePosted;
-    private Timestamp dateExpiration;
+    private String dateExpiration;
+    private String timeExpiration;
     private String status;
     private String genreTag;
 
     public IssueDetails() {
     }
 
-    public IssueDetails(int issueId, String issueName, int ownerId, String description, Timestamp dateProposed, Timestamp datePosted, Timestamp dateExpiration, String status, String genreTag) {
+    public IssueDetails(int issueId, String issueName, int ownerId, String description, Timestamp datePosted, String dateExpiration, String timeExpiration, String status, String genreTag) {
         this.issueId = issueId;
         this.issueName = issueName;
         this.ownerId = ownerId;
         this.description = description;
-        this.dateProposed = dateProposed;
         this.datePosted = datePosted;
         this.dateExpiration = dateExpiration;
+        this.timeExpiration = timeExpiration;
         this.status = status;
         this.genreTag = genreTag;
     }
@@ -60,14 +62,6 @@ public class IssueDetails {
         this.description = description;
     }
 
-    public Timestamp getDateProposed() {
-        return dateProposed;
-    }
-
-    public void setDateProposed(Timestamp dateProposed) {
-        this.dateProposed = dateProposed;
-    }
-
     public Timestamp getDatePosted() {
         return datePosted;
     }
@@ -76,12 +70,20 @@ public class IssueDetails {
         this.datePosted = datePosted;
     }
 
-    public Timestamp getDateExpiration() {
+    public String getDateExpiration() {
         return dateExpiration;
     }
 
-    public void setDateExpiration(Timestamp dateExpiration) {
+    public void setDateExpiration(String dateExpiration) {
         this.dateExpiration = dateExpiration;
+    }
+
+    public String getTimeExpiration() {
+        return timeExpiration;
+    }
+
+    public void setTimeExpiration(String timeExpiration) {
+        this.timeExpiration = timeExpiration;
     }
 
     public String getStatus() {

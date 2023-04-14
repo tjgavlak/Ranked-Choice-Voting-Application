@@ -5,6 +5,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public IssueDetails getIssueById(int issueId) {
         IssueDetails results = new IssueDetails();
-        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag " +
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag " +
                 "FROM issues WHERE issue_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
         if (rowSet.next()) {
@@ -34,8 +37,8 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     public boolean postIssue(IssueDetails issue) {
         IssueDetails results = new IssueDetails();
         String sql = "INSERT INTO issues " +
-                "(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag) " +
-                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), NULL, 'active', ?);";
+                "(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag) " +
+                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'active', ?);";
         try {
             jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
         } catch (DataAccessException e) {
@@ -48,7 +51,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public List<IssueDetails> getAllPendingIssues() {
         List<IssueDetails> results = new ArrayList<>();
-        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'pending';";
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag FROM issues WHERE status = 'pending';";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while(rowSet.next()){
             IssueDetails issue = mapRowToIssueDetails(rowSet);
@@ -60,7 +63,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public List<IssueDetails> getAllActiveIssues() {
         List<IssueDetails> results = new ArrayList<>();
-        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'active';";
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag FROM issues WHERE status = 'active';";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while(rowSet.next()){
             IssueDetails issue = mapRowToIssueDetails(rowSet);
@@ -101,9 +104,9 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         issueDetails.setIssueName(rowSet.getString("issue_name"));
         issueDetails.setOwnerId(rowSet.getInt("issue_owner_id"));
         issueDetails.setDescription(rowSet.getString("description"));
-        issueDetails.setDateProposed(rowSet.getTimestamp("date_proposed"));
         issueDetails.setDatePosted(rowSet.getTimestamp("date_posted"));
-        issueDetails.setDateExpiration(rowSet.getTimestamp("expiration_date"));
+        issueDetails.setDateExpiration(rowSet.getString("expiration_date"));
+        issueDetails.setTimeExpiration(rowSet.getString("expiration_time"));
         issueDetails.setStatus(rowSet.getString("status"));
         issueDetails.setGenreTag(rowSet.getString("genre_tag"));
 //        List<String> choices = new ArrayList<>();
