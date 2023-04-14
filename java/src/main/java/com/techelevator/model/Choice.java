@@ -4,17 +4,17 @@ public class Choice {
 
     private int issueId;
     private int choiceId;
-    private String choiceValue;
-    private boolean isWinner;
+    private String choice;
+    private int points;
 
     public Choice() {
     }
 
-    public Choice(int issueId, int choiceId, String choiceValue, boolean isWinner) {
+    public Choice(int issueId, int choiceId, String choice, int points) {
         this.issueId = issueId;
         this.choiceId = choiceId;
-        this.choiceValue = choiceValue;
-        this.isWinner = isWinner;
+        this.choice = choice;
+        this.points = points;
     }
 
     public int getIssueId() {
@@ -33,19 +33,19 @@ public class Choice {
         this.choiceId = choiceId;
     }
 
-    public String getChoiceValue() {
-        return choiceValue;
+    public String getChoice() {
+        return choice;
     }
 
-    public void setChoiceValue(String choiceValue) {
-        this.choiceValue = choiceValue;
+    public void setChoice(String choice) {
+        this.choice = choice;
     }
 
-    public boolean isWinner() {
-        return isWinner;
+    public int getPoints() {
+        return points;
     }
 
-    public void setWinner(boolean winner) {
-        isWinner = winner;
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

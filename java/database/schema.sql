@@ -31,6 +31,7 @@ CREATE TABLE choices (
 	choice_id SERIAL PRIMARY KEY,
 	issue_id INT,
 	choice VARCHAR (100),
+	points INT default 0,
 	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
 );
 

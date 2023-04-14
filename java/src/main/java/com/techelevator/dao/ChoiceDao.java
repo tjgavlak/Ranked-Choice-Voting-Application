@@ -7,5 +7,5 @@ import java.util.List;
 public interface ChoiceDao {
 
     List<Choice> getAllChoices(int issueId);
-
+    boolean postChoice(Choice choice);
 }

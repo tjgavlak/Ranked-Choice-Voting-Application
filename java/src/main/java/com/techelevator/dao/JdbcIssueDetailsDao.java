@@ -26,18 +26,8 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public IssueDetails getIssueById(int issueId) {
         IssueDetails results = new IssueDetails();
-        String sql = "SELECT i.issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag, " +
-                "choices.choice_1, " +
-                "choices.choice_2, " +
-                "choices.choice_3, " +
-                "choices.choice_4, " +
-                "choices.choice_5, " +
-                "choices.choice_6, " +
-                "choices.choice_7, " +
-                "choices.choice_8, " +
-                "choices.choice_9, " +
-                "choices.choice_10 " +
-                "FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = ?;";
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag " +
+                "FROM issues WHERE issue_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
         if (rowSet.next()) {
             results = mapRowToIssueDetails(rowSet);
@@ -49,12 +39,11 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     @Override
     public boolean postIssue(IssueDetails issue) {
         IssueDetails results = new IssueDetails();
-        String sql = "BEGIN TRANSACTION " +
-                "INSERT INTO issues " +
+        String sql = "INSERT INTO issues " +
                 "(issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag) " +
-                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), NULL, NULL, 'pending', ?);";
+                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), NULL, 'active', ?);";
         try {
-            jdbcTemplate.update(sql, IssueDetails.class, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
+            jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
         } catch (DataAccessException e) {
             return false;
         }
@@ -78,18 +67,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return issueId;
     }
 
-    @Override
-    public boolean postChoice(int issueId, String choice) {
-        boolean success = false;
-        String sql = "INSERT INTO choices (issue_id) VALUES ?;";
-        try {
-            jdbcTemplate.update(sql, issueId);
-            success = true;
-        } catch (DataAccessException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nope", e);
-        }
-        return success;
-    }
+
 
     @Override
     public boolean updateChoices(String choiceString) {
@@ -113,16 +91,16 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         issueDetails.setDateExpiration(rowSet.getTimestamp("expiration_date"));
         issueDetails.setStatus(rowSet.getString("status"));
         issueDetails.setGenreTag(rowSet.getString("genre_tag"));
-        List<String> choices = new ArrayList<>();
-        for (int i = 1; i < 10; i++) {
-            String choice = rowSet.getString("choice_" + i);
-            if(choice != null) {
-                choices.add(choice);
-            } else {
-                break;
-            }
-        }
-        issueDetails.setChoices(choices);
+//        List<String> choices = new ArrayList<>();
+//        for (int i = 1; i < 10; i++) {
+//            String choice = rowSet.getString("choice_" + i);
+//            if(choice != null) {
+//                choices.add(choice);
+//            } else {
+//                break;
+//            }
+//        }
+       // issueDetails.setChoices(choices);
         return issueDetails;
     }
 }

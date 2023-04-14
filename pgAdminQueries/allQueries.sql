@@ -69,6 +69,7 @@ CREATE TABLE choices (
 	choice_id SERIAL PRIMARY KEY,
 	issue_id INT,
 	choice VARCHAR (100),
+	points INT default 0,
 	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
 );
 
@@ -88,9 +89,15 @@ VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit'
 
 INSERT INTO choices(issue_id, choice) VALUES (4, 'less ham');
 
-SELECT * FROM choices c RIGHT OUTER JOIN issues i ON c.issue_id = i.issue_id WHERE i.issue_id = 4;
+SELECT choice FROM choices c RIGHT OUTER JOIN issues i ON c.issue_id = i.issue_id WHERE i.issue_id = 1;
 
-SELECT choice FROM choices WHERE issue_id = 4;
+SELECT choice, points FROM choices WHERE issue_id = 1;
+
+SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = 1;
+
+SELECT * FROM issues;
+
+
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)

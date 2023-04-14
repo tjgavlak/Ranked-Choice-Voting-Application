@@ -1,8 +1,13 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Choice;
+import com.techelevator.model.Issue;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +23,34 @@ public class JdbcChoiceDao implements ChoiceDao {
 
     @Override
     public List<Choice> getAllChoices(int issueId) {
-        return null;
+
+        List<Choice> results = new ArrayList<>();
+        String sql = "SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = ?;";
+    SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
+            while(rowSet.next()){
+        Choice choice = mapRowToChoice(rowSet);
+        results.add(choice);
     }
-//        List<Choice> results = new ArrayList<>();
-//        String sql =
-//    }
+            return results;
+    }
+
+    @Override
+    public boolean postChoice(Choice choice) {
+        String sql = "INSERT INTO choices (issue_id, choice) VALUES (?, ?);";
+        try {
+            jdbcTemplate.update(sql, choice.getIssueId(), choice.getChoice());
+        } catch (DataAccessException e) {
+           return false;
+        }
+        return true;
+    }
+
+    private Choice mapRowToChoice(SqlRowSet rowSet) {
+        Choice choice = new Choice();
+        choice.setIssueId(rowSet.getInt("issue_id"));
+        choice.setChoiceId(rowSet.getInt("choice_id"));
+        choice.setChoice(rowSet.getString("choice"));
+        choice.setPoints(rowSet.getInt("points"));
+        return choice;
+    }
 }

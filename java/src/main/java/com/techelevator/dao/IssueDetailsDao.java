@@ -5,6 +5,6 @@ public interface IssueDetailsDao {
     IssueDetails getIssueById(int issueId);
     boolean postIssue(IssueDetails issue);
     int queryForIssueId();
-    boolean postChoice(int issueId, String choice);
-    boolean updateChoices(String choiceString);
+
+    boolean updateChoices(String choiceString); //nicole, we shall return to this!
 }
