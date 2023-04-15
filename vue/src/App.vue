@@ -29,23 +29,25 @@
 body {
   background: linear-gradient(
     to bottom,
-    #00274c 0%,
-    #00274c 4.5%,
-    #fcaf38 4.5%,
-    #fcaf38 22%,
-    #f8f5f1 22%,
-    #f8f5f1 22.2%,
-    #fcaf38 22.2%,
-    #fcaf38 23%,
-    #f8f5f1 23%,
-    #f8f5f1 23.2%,
-    #fcaf38 23.2%,
-    #fcaf38 24%,
-    #f8f5f1 24%,
-    #f8f5f1 24.2%,
-    #fcaf38 24.2%,
-    #fcaf38 25%,
-    #00274c 24.2%
+    #ece6c2 0%,
+    #ece6c2 4%,
+    #cc6b49 4%,
+    #cc6b49 4.2%,
+    #73bda8 4.2%,
+    #73bda8 22%,
+    #cc6b49 22%,
+    #cc6b49 22.2%,
+    #73bda8 22.2%,
+    #73bda8 23%,
+    #cc6b49 23%,
+    #cc6b49 23.2%,
+    #73bda8 23.2%,
+    #73bda8 24%,
+    #cc6b49 24%,
+    #cc6b49 24.2%,
+    #73bda8 24%,
+    #73bda8 24.3%,
+    #ece6c2 26.2%
   );
   font-family: "Quicksand", sans-serif;
   font-size: 1.2em;
@@ -53,16 +55,16 @@ body {
   height: 100vh;
 }
 #nav {
-  color: #fcaf38;
+  color: #cc6b49;
 }
 
 a {
-  color: #f8f5f1;
+  color: #6f5643;
   text-decoration: none;
 }
 
 a:hover {
-  text-shadow: 1px 1px 5px #fff;
+  text-shadow: 1px 1px 2px #6f5643;
 }
 
 header {
@@ -71,7 +73,7 @@ header {
 }
 
 p {
-  color: #f8f5f1;
+  color: #6f5643;
   text-indent: 30px;
 }
 </style>

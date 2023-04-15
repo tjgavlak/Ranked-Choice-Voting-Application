@@ -22,7 +22,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <br />
+      <br /><br />
       <button type="submit">Sign in</button>&nbsp;&nbsp;
       <router-link :to="{ name: 'register' }"
         >Need an account? Sign up.</router-link
@@ -75,6 +75,11 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+  color: #ece6c2;
+}
+
+h1 {
+  color: #ece6c2;
 }
 
 a {

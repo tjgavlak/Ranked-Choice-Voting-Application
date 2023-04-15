@@ -88,10 +88,10 @@ export default {
 
 <style scoped>
 th {
-  color: #f8f5f1;;
+  color: #6f5643;
 }
 
 td {
-  color: #f8f5f1;
+  color: #6f5643;
 }
 </style>

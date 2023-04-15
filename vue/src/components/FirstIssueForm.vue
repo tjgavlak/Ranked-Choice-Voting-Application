@@ -74,22 +74,22 @@ body {
 }
 
 #required {
-  color: #f8f5f1;
+  color: #6f5643;
   font-size: 0.7em;
   font-style: italic;
 }
 
 h2 {
-  color: #00274c;
+  color: #ece6c2;
   font-size: 0.9em;
   font-weight: normal;
 }
 
 label {
-  color: #f8f5f1;
+  color: #6f5643;
 }
 
 h1 {
-  color: #00274c;
+  color: #ece6c2;
 }
 </style>
