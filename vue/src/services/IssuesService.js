@@ -14,7 +14,13 @@ export default {
     details(id) {
         return http.get(`/issues/${id}`)
     },
-    submitForm(payload) {
+    submitIssue(payload) {
         return http.post(`/issues`, payload)
-    }
+    },
+    submitChoices(payload) {
+        return http.post(`/issues/choices`, payload)
+    },
+    choiceDetails(id) {
+        return http.get(`/issues/${id}/choices`)
+    },
 }

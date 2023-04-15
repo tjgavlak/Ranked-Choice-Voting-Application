@@ -23,7 +23,7 @@
           </td>
           <td>
             &nbsp;&nbsp;
-            <button v-bind="issue.issueId" v-on:click="viewIssue(issue.issueId)">Vote!</button>
+            <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
         </tr>
 

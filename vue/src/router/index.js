@@ -8,6 +8,7 @@ import store from '../store/index'
 import ActiveIssues from '../views/ActiveIssues.vue'
 import IssueDetails from '../views/IssueDetails.vue'
 import ProposeIssue from '../views/ProposeIssue.vue'
+import SecondIssueForm from '../views/SecondIssueForm.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/issues",
       name: "proposal-form",
       component: ProposeIssue,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/issues/choices",
+      name: "choices-form",
+      component: SecondIssueForm,
       meta: {
         requiresAuth: true
       }

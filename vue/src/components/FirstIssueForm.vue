@@ -8,7 +8,7 @@
       page.
     </h2>
     <br /><br /><br />
-    <form v-on:submit="saveForm">
+    <form v-on:submit="saveForm()">
       <label for="issue-name">Issue Name*</label><br />
       <input
         name="issue-name"
@@ -47,10 +47,11 @@
 import issuesService from "@/services/IssuesService";
 
 export default {
-  name: "proposal-form",
+  name: "issue",
   data() {
     return {
       proposal: {
+        issueId: "",
         issueName: "",
         description: "",
         dateExpiration: "",
@@ -61,8 +62,12 @@ export default {
   },
   methods: {
     saveForm() {
-      issuesService.submitForm(this.proposal);
+      issuesService.submitIssue(this.proposal);
+      this.$router.push('/issues/choices');
     },
+    viewChoices(id) {
+      this.$router.push(`/issues/choices/${id}`);
+    }
   },
 };
 </script>

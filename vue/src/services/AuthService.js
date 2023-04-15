@@ -12,6 +12,10 @@ export default {
 
   getCurrentUser() {
     return axios.get()
-  }
+  },
 
+  // new shit
+  getCurrentIssue() {
+    return axios.get()
+  }
 }
