@@ -31,9 +31,9 @@ public class IssueController {
         return this.issueDetailsDao.getAllActiveIssues();
     }
 
-    @GetMapping("/issues/pending")
-    public List<IssueDetails> getAllPendingIssues() {
-        return this.issueDetailsDao.getAllPendingIssues();
+    @GetMapping("/issues/completed")
+    public List<IssueDetails> getAllCompletedIssues() {
+        return this.issueDetailsDao.getAllCompletedIssues();
     }
 
     @GetMapping("/issues/{issueId}")
@@ -44,6 +44,11 @@ public class IssueController {
     @GetMapping("/issues/{issueId}/choices")
     public List <Choice> getAllChoicesById(@PathVariable int issueId) {
         return this.choiceDao.getAllChoices(issueId);
+    }
+
+    @GetMapping("/issues/{issueId}/choices/ranked")
+    public List <Choice> getRankedChoices(@PathVariable int issueId) {
+        return this.choiceDao.getRankedChoices(issueId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

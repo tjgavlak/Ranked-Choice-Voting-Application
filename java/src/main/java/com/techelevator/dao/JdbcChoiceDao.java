@@ -3,11 +3,9 @@ package com.techelevator.dao;
 import com.techelevator.model.Choice;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class JdbcChoiceDao implements ChoiceDao {
     public List<Choice> getAllChoices(int issueId) {
 
         List<Choice> results = new ArrayList<>();
-        String sql = "SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = ?;";
+        String sql = "SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = ? ORDER BY choice_id ASC;";
     SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
             while(rowSet.next()){
         Choice choice = mapRowToChoice(rowSet);
@@ -43,6 +41,19 @@ public class JdbcChoiceDao implements ChoiceDao {
            return false;
         }
         return true;
+    }
+
+    @Override
+    public List<Choice> getRankedChoices(int issueId) {
+
+        List<Choice> results = new ArrayList<>();
+        String sql = "SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = ? ORDER BY points DESC";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
+        while(rowSet.next()){
+            Choice choice = mapRowToChoice(rowSet);
+            results.add(choice);
+        }
+        return results;
     }
 
     private Choice mapRowToChoice(SqlRowSet rowSet) {

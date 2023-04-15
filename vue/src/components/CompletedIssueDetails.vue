@@ -1,14 +1,20 @@
 <template>
   <div class="issue-details">
-    <h2>Issue: {{ issue.issueName }}</h2>
+    <h2>Closed Issue: {{ issue.issueName }}</h2>
     <h4>Description: {{ issue.description }}</h4>
-    <h5>Date Posted: {{ formatDate(issue.datePosted) }}</h5>
-    <h5>Poll Closes: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
+    <h5>Poll Closed: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
     <h5>{{ issue.genreTag }}</h5>
-    
-    <ul v-for="choice in choices" :key="choice.choiceId">
-    <li>{{choice.choiceId}} | {{choice.choice}}</li>
-    </ul>
+
+<div>
+    this guy wins
+    <p v-for="choice in choices" :key="choice.choiceId">
+    {{choice.choiceId}} 
+    {{choice.choice}}
+    {{choice.points}}
+    {{choice.issueId}}
+
+    </p>
+</div>
   </div>
 </template>
 
@@ -16,16 +22,16 @@
 import issuesService from "@/services/IssuesService";
 
 export default {
-  name: "issue-details",
+  name: "completed-issue-details",
   data() {
     return {
       issue: "",
       choices: [],
       choice: {
-        choice: "",
-        choiceId: "",
-        issueId: "",
-        points: ""
+          choiceId: "",
+          choice: "",
+          issueId: "",
+          points: ""
       }
     };
   },
@@ -33,7 +39,7 @@ export default {
     issuesService.details(this.$route.params.issueId).then((response) => {
       this.issue = response.data;
     });
-    issuesService.choiceDetails(this.$route.params.issueId).then((response) => {
+    issuesService.rankedChoices(this.$route.params.issueId).then((response) => {
       this.choices = response.data;
     })
   },
@@ -68,4 +74,8 @@ export default {
 </script>
 
 <style>
+p:first-child {
+    border: 2px solid orange;
+    font-weight: bold;
+}
 </style>

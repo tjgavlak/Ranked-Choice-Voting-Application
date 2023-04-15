@@ -8,8 +8,8 @@ export default {
     listActive() {
         return http.get('/issues/active')
     },
-    listPending() {
-        return http.get('/issues/pending')
+    listCompleted() {
+        return http.get('/issues/completed')
     },
     details(id) {
         return http.get(`/issues/${id}`)
@@ -23,4 +23,8 @@ export default {
     choiceDetails(id) {
         return http.get(`/issues/${id}/choices`)
     },
+    rankedChoices(id){
+        return http.get(`/issues/${id}/choices/ranked`)
+    }
+    
 }

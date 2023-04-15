@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +47,9 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
 
 
     @Override
-    public List<IssueDetails> getAllPendingIssues() {
+    public List<IssueDetails> getAllCompletedIssues() {
         List<IssueDetails> results = new ArrayList<>();
-        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag FROM issues WHERE status = 'pending';";
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag FROM issues WHERE status = 'completed';";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while(rowSet.next()){
             IssueDetails issue = mapRowToIssueDetails(rowSet);

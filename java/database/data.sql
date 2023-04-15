@@ -31,3 +31,8 @@ INSERT INTO choices(issue_id, choice) VALUES (2, 'Thesaurus');
 INSERT INTO choices(issue_id, choice) VALUES (2, 'BootcampOS');
 INSERT INTO choices(issue_id, choice) VALUES (2, 'The Bell Jar');
 INSERT INTO choices(issue_id, choice) VALUES (2, 'The Bible');
+
+UPDATE choices SET points = 3 WHERE choice_id = 1;
+UPDATE choices SET points = 7 WHERE choice_id = 2;
+UPDATE choices SET points = 10 WHERE choice_id = 3;
+

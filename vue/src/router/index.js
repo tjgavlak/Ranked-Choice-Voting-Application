@@ -9,6 +9,8 @@ import ActiveIssues from '../views/ActiveIssues.vue'
 import IssueDetails from '../views/IssueDetails.vue'
 import ProposeIssue from '../views/ProposeIssue.vue'
 import SecondIssueForm from '../views/SecondIssueForm.vue'
+import CompletedIssues from '../views/CompletedIssues.vue'
+import CompletedIssueDetails from '../views/CompletedIssueDetails.vue'
 
 Vue.use(Router)
 
@@ -88,7 +90,23 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/issues/completed",
+      name: "completed-issues",
+      component: CompletedIssues,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/issues/completed/:issueId",
+      name: "completed-issue-details",
+      component: CompletedIssueDetails,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 

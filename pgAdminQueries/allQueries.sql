@@ -4,6 +4,8 @@ SELECT * FROM users
 
 SELECT * FROM choices
 
+SELECT choice, points, choice_id FROM choices WHERE issue_id = 1 ORDER BY points DESC
+
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
 VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', NULL, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0) + INTERVAL '2 days', 'active', 'genre_1');
@@ -16,7 +18,9 @@ VALUES (5);
 
 UPDATE choices SET choice_1 = 'one', choice_2 = 'two', choice_3 = 'three' WHERE issue_id = 5;
 
-
+UPDATE choices SET points = 3 WHERE choice_id = 1;
+UPDATE choices SET points = 7 WHERE choice_id = 2;
+UPDATE choices SET points = 10 WHERE choice_id = 3;
 
 
 --, choice_1, choice_2, choice_3, choice_4, choice_5, choice_6, choice_7, choice_8, choice_9, choice_10

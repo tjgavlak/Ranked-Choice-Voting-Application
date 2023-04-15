@@ -5,12 +5,14 @@
       <router-link v-bind:to="{ name: 'active-issues' }"
         >Active Issues</router-link
       >&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'completed-issues' }"
+        >Past Issues</router-link
+      >&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'proposal-form' }"
         >Post an Issue</router-link
       >&nbsp;|&nbsp;
       <!--CHANGE THIS WHEN REFACTORING -->
-      <router-link v-bind:to="{ name: 'login' }"
-        >Login</router-link
+      <router-link v-bind:to="{ name: 'login' }">Login</router-link
       >&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'logout' }"
