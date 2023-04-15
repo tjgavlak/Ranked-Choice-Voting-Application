@@ -16,7 +16,7 @@ VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit'
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
-VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'active', 'genre_2');
+VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'completed', 'genre_2');
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)

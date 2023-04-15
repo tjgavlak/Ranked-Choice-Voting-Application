@@ -1,11 +1,11 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/FTR_Black.png" /></header>
-    <br /><br />
+    <header><img src="@/assets/FTR.png" /></header>
+    <br />
     <table>
       <thead>
         <tr>
-          <th id="issues">Issues</th>
+          <th id="issues">Issues</th>&nbsp;
           <th id="poll-close">Poll Closes</th>
         </tr>
       </thead>
@@ -26,25 +26,10 @@
             <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
         </tr>
-
-        <!-- <tr v-for="issue in issues" :key="issue.issueId">
-          <td class="name">{{ issue.name }}</td> -->
-        <!-- <router-link
-            v-bind:to="{
-              name: 'Description',
-              params: { issueId: issue.issueId },
-            }"
-            >{{ issue.description }}</router-link
-          >
-          <td class="description">{{ issue.description }}</td>
-          <td>
-            <button>Edit</button>&nbsp;
-            <button>Delete</button>
-          </td> -->
-        <!-- </tr> -->
       </tbody>
     </table>
-    <router-view /> <!-- need to read up on router-view -->
+    <router-view />
+    <!-- need to read up on router-view -->
   </div>
 </template>
 
@@ -98,12 +83,6 @@ export default {
 </script>
 
 <style scoped>
-th {
-  color: #6f5643;
-}
 
-td {
-  color: #6f5643;
-}
 </style>
 

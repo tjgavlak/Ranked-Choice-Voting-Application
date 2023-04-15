@@ -1,11 +1,11 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/FTR_Black.png" /></header>
-    <br /><br />
+    <header><img src="@/assets/FTR.png" /></header>
+    <br />
     <table>
       <thead>
         <tr>
-          <th id="issues">Issues</th>
+          <th id="issues">Issues</th>&nbsp;
           <th id="poll-close">Poll Closes</th>
         </tr>
       </thead>
@@ -83,12 +83,5 @@ export default {
 </script>
 
 <style scoped>
-th {
-  color: #6f5643;
-}
 
-td {
-  color: #6f5643;
-}
 </style>
-

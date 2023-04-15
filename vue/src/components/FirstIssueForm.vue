@@ -7,8 +7,8 @@
       blank and add it at a later date. Your choices can be added on the next
       page.
     </h2>
-    <br /><br /><br />
-    <form v-on:submit="saveForm()">
+    <br />
+    <form class="first-form" v-on:submit="saveForm()">
       <label for="issue-name">Issue Name*</label><br />
       <input
         name="issue-name"
@@ -73,27 +73,9 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background-color: deeppink;
-}
 
-#required {
-  color: #6f5643;
-  font-size: 0.7em;
-  font-style: italic;
-}
 
-h2 {
-  color: #ece6c2;
-  font-size: 0.9em;
-  font-weight: normal;
-}
 
-label {
-  color: #6f5643;
-}
 
-h1 {
-  color: #ece6c2;
-}
+
 </style>
