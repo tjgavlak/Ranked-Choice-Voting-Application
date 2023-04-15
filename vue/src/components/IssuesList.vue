@@ -1,6 +1,7 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/FTR_Black.png" /></header><br><br>
+    <header><img src="@/assets/FTR_Black.png" /></header>
+    <br /><br />
     <table>
       <thead>
         <tr>
@@ -11,9 +12,18 @@
       <tbody>
         <tr v-for="issue in issues" :key="issue.issueId">
           <td class="issue-name">{{ issue.issueName }}&nbsp;&nbsp;&nbsp;</td>
-          <td class="expiration-date">&nbsp;&nbsp;&nbsp;{{ formatDate(issue.dateExpiration) }}</td>
-          <td>&nbsp;&nbsp;
-            <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
+          <td class="expiration-date">
+            &nbsp;&nbsp;&nbsp;{{ formatDate(issue.dateExpiration) }}
+          </td>
+          <td class="expiration-time">
+            {{ issue.timeExpiration }}
+          </td>
+          <td class="issue-id">
+            {{ issue.issueId }}
+          </td>
+          <td>
+            &nbsp;&nbsp;
+            <button v-bind="issue.issueId" v-on:click="viewIssue(issue.issueId)">Vote!</button>
           </td>
         </tr>
 
@@ -34,7 +44,7 @@
         <!-- </tr> -->
       </tbody>
     </table>
-    <router-view />
+    <router-view /> <!-- need to read up on router-view -->
   </div>
 </template>
 
@@ -51,6 +61,7 @@ export default {
         issueName: "",
         description: "",
         dateExpiration: "",
+        timeExpiration: "",
       },
     };
   },
@@ -69,19 +80,19 @@ export default {
       this.$router.push(`/issues/active/${id}`);
     },
     formatDate(date) {
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
+      let d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
 
-    const formatted = month + '/' + day + '/' + year + ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    return formatted;
-    }
+      const formatted = month + "/" + day + "/" + year;
+      return formatted;
+    },
+
+    // ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
   },
 };
 </script>
@@ -95,3 +106,4 @@ td {
   color: #6f5643;
 }
 </style>
+

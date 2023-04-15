@@ -38,9 +38,9 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         IssueDetails results = new IssueDetails();
         String sql = "INSERT INTO issues " +
                 "(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag) " +
-                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), '04/16/23', '04:00 PM', 'active', ?);";
+                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), ?, ?, 'active', ?);";
         try {
-            jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getGenreTag());
+            jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getDateExpiration(), issue.getTimeExpiration(), issue.getGenreTag());
         } catch (DataAccessException e) {
             return false;
         }
@@ -106,6 +106,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         issueDetails.setDescription(rowSet.getString("description"));
         issueDetails.setDatePosted(rowSet.getTimestamp("date_posted"));
         issueDetails.setDateExpiration(rowSet.getString("expiration_date"));
+        String time = rowSet.getString("expiration_time");
         issueDetails.setTimeExpiration(rowSet.getString("expiration_time"));
         issueDetails.setStatus(rowSet.getString("status"));
         issueDetails.setGenreTag(rowSet.getString("genre_tag"));

@@ -25,7 +25,7 @@ export default {
     };
   },
   created() {
-    issuesService.details(1).then((response) => {
+    issuesService.details().then((response) => {
       this.issue = response.data;
     });
   },

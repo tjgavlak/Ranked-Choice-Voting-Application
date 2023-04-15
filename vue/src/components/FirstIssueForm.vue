@@ -15,7 +15,7 @@
         type="text"
         maxlength="70"
         required
-        v-model="proposal.issue_name"
+        v-model="proposal.issueName"
       /><br /><br />
       <label for="issue-description">Description*</label><br />
       <textarea
@@ -28,10 +28,10 @@
         v-model="proposal.description"
       /><br /><br />
       <label for="deadline">Poll Closing Time</label><br />
-      <input type="date" />&nbsp; <input type="time" /><br /><br />
+      <input type="date" v-model="proposal.dateExpiration" /> &nbsp; <input type="time" v-model="proposal.timeExpiration" /><br /><br />
 
       <label for="genre">Genre</label><br />
-      <select name="genre" id="genre" v-model="proposal.genre_tag">
+      <select name="genre" id="genre" v-model="proposal.genreTag">
         <option value="genre1">Genre 1</option>
         <option value="genre2">Genre 2</option>
         <option value="genre3">Ham</option></select
@@ -51,18 +51,17 @@ export default {
   data() {
     return {
       proposal: {
-        issue_name: "",
+        issueName: "",
         description: "",
-        expiration_date: "",
-        expiration_time: "",
-        genre_tag: "",
+        dateExpiration: "",
+        timeExpiration: "",
+        genreTag: "",
       },
     };
   },
   methods: {
     saveForm() {
       issuesService.submitForm(this.proposal);
-      //this might need to be async fuckin idk
     },
   },
 };

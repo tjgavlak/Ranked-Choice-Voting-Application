@@ -18,8 +18,8 @@ CREATE TABLE issues (
     issue_owner_id INTEGER,
     description VARCHAR(500),
     date_posted TIMESTAMP NULL,
-    expiration_date DATE,
-	expiration_time TIME,
+    expiration_date VARCHAR(20),
+	expiration_time VARCHAR(20),
     status VARCHAR(40),
     genre_tag VARCHAR(40),
     CONSTRAINT FK_issue_owner_id FOREIGN KEY(issue_owner_id) REFERENCES users(user_id)
