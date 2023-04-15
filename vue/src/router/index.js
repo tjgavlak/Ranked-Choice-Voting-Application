@@ -65,7 +65,7 @@ const router = new Router({
       }
     },
     {
-      path: "/issues/active/:id",
+      path: "/issues/active/:issueId",
       name: "issue-details",
       component: IssueDetails,
       meta: {
