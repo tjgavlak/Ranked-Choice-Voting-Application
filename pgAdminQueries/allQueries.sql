@@ -4,7 +4,12 @@ SELECT * FROM users
 
 SELECT * FROM choices
 
-SELECT choice, points, choice_id FROM choices WHERE issue_id = 1 ORDER BY points DESC
+SELECT choice, points, choice_id FROM choices WHERE issue_id = 2 ORDER BY points DESC
+UPDATE choices SET points = 3 WHERE choice_id = 7;
+UPDATE choices SET points = 3 WHERE choice_id = 4;
+UPDATE choices SET points = 3 WHERE choice_id = 5;
+UPDATE choices SET points = 3 WHERE choice_id = 6;
+UPDATE choices SET points = 3 WHERE choice_id = 8;
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)

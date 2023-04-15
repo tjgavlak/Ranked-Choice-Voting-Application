@@ -7,7 +7,7 @@
     <h5>{{ issue.genreTag }}</h5>
     
     <ul v-for="choice in choices" :key="choice.choiceId">
-    <li>{{choice.choiceId}} | {{choice.choice}}</li>
+    <li>{{choice.choiceId}} | {{choice.choice}} </li>
     </ul>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
     })
   },
   methods: {
-        formatDate(date) {
+    formatDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
         day = "" + d.getDate(),
@@ -50,7 +50,7 @@ export default {
       const formatted = month + "/" + day + "/" + year + ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       return formatted;
     },
-        formatJustDate(date) {
+    formatJustDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
         day = "" + d.getDate(),
@@ -62,7 +62,7 @@ export default {
       const formatted = month + "/" + day + "/" + year;
       return formatted;
     },
-    // 
+    
   }
 };
 </script>
