@@ -11,4 +11,10 @@ public interface ChoiceDao {
     boolean postChoice(Choice choice);
 
     List<Choice> getRankedChoices(int issueId);
+
+    void userFirstPreference(int choiceId);
+
+    void userSecondPreference(int choiceId);
+
+    void userThirdPreference(int choiceId);
 }

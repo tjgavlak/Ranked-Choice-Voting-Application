@@ -3,15 +3,15 @@
 
       <h1>Add Options:</h1>
       <h2>Here you'll add your choices!</h2>
-      <form v-on:submit="saveForm">
-          <label for="choice">Choice:</label><br/>
+      <form v-on:submit.prevent="saveForm()">
+          <label for="option">Choice:</label><br/>
           <input
-        name="choice"
+        name="option"
         type="text"
-        maxlength="100"
-        required
+
+        v-model="option.choice"
       />&nbsp;
-      <button type="submit">Submit</button>
+      <button type="submit" value="save">Submit</button>
       </form>
   </div>
 </template>
@@ -20,26 +20,39 @@
 import issuesService from "@/services/IssuesService";
 
 export default {
-    name: "choices-form",
+    name: "choice",
     props: {
         proposal: Object
     },
     created(){
-        issuesService.mostRecentIssueId();
+        // this.$route.params.proposal
+        // issuesService.mostRecentIssueId();
     },
     data() {
         return {
-            choice: {
+            option: {
                 choiceId: "",
-                issueId: "",
+                issueId: "{{recentId}}",
                 choice: "",
-                votes: 0
+                points: ""
             }
         }
     },
     methods: {
+        get() {
+          let recentId = issuesService.mostRecentIssueId();  
+          return recentId;
+        },
         saveForm() {
-            issuesService.submitChoice(this.choice);
+            // this.$store.commit('ADD_CHOICE', this.choice);
+            // this.choice = {
+            //     choiceId: "",
+            //     issueId: "",
+            //     choice: "",
+            //     points: 0
+            // }
+            issuesService.submitChoices(this.option);
+            
         }
     }
 }

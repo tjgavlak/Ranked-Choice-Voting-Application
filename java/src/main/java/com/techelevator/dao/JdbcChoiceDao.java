@@ -34,9 +34,9 @@ public class JdbcChoiceDao implements ChoiceDao {
 
     @Override
     public boolean postChoice(Choice choice) {
-        String sql = "INSERT INTO choices (issue_id, choice) VALUES (?, ?);";
+        String sql = "INSERT INTO choices (issue_id, choice, points) VALUES (?, ?, ?);";
         try {
-            jdbcTemplate.update(sql, choice.getIssueId(), choice.getChoice());
+            jdbcTemplate.update(sql, choice.getIssueId(), choice.getChoice(), choice.getPoints());
         } catch (DataAccessException e) {
            return false;
         }
@@ -45,7 +45,6 @@ public class JdbcChoiceDao implements ChoiceDao {
 
     @Override
     public List<Choice> getRankedChoices(int issueId) {
-
         List<Choice> results = new ArrayList<>();
         String sql = "SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = ? ORDER BY points DESC";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, issueId);
@@ -54,6 +53,24 @@ public class JdbcChoiceDao implements ChoiceDao {
             results.add(choice);
         }
         return results;
+    }
+
+    @Override
+    public void userFirstPreference(int choiceId) {
+        String sql = "UPDATE choices SET points = points + 3 WHERE choice_id = ?;";
+        jdbcTemplate.update(sql, choiceId);
+    }
+
+    @Override
+    public void userSecondPreference(int choiceId) {
+        String sql = "UPDATE choices SET points = points + 2 WHERE choice_id = ?;";
+        jdbcTemplate.update(sql, choiceId);
+    }
+
+    @Override
+    public void userThirdPreference(int choiceId) {
+        String sql = "UPDATE choices SET points = points + 1 WHERE choice_id = ?;";
+        jdbcTemplate.update(sql, choiceId);
     }
 
     private Choice mapRowToChoice(SqlRowSet rowSet) {

@@ -85,7 +85,7 @@ const router = new Router({
     },
     {
       path: "/issues/choices",
-      name: "choices-form",
+      name: "choice",
       component: SecondIssueForm,
       meta: {
         requiresAuth: true

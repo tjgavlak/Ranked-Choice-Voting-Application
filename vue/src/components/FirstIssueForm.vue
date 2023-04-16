@@ -8,7 +8,7 @@
       page.
     </h2>
     <br />
-    <form class="first-form" v-on:submit="saveForm()">
+    <form class="first-form" v-on:submit.prevent="saveForm()">
       <label for="issue-name">Issue Name*</label><br />
       <input
         name="issue-name"
@@ -63,11 +63,20 @@ export default {
   methods: {
     saveForm() {
       issuesService.submitIssue(this.proposal);
+      this.$store.commit('ADD_ISSUE', this.proposal);
+      this.proposal = {
+        issueId: "",
+        issueName: "",
+        description: "",
+        dateExpiration: "",
+        timeExpiration: "",
+        genreTag: "",
+      }
       this.$router.push('/issues/choices');
     },
-    viewChoices(id) {
-      this.$router.push(`/issues/choices/${id}`);
-    }
+    // viewChoices(id) {
+    //   this.$router.push(`/issues/choices/${id}`);
+    // }
   },
 };
 </script>

@@ -47,7 +47,7 @@ public class IssueController {
     }
 
     @GetMapping("/issues/recent")
-    public int getAllChoicesById() {
+    public int getRecentIssue() {
         return this.issueDetailsDao.queryForIssueId();
     }
 

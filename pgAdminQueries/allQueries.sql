@@ -4,6 +4,10 @@ SELECT * FROM users
 
 SELECT * FROM choices
 
+SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;
+
+UPDATE choices SET points = points + 3 WHERE choice_id = 1;
+
 SELECT choice, points, choice_id FROM choices WHERE issue_id = 2 ORDER BY points DESC
 UPDATE choices SET points = 3 WHERE choice_id = 7;
 UPDATE choices SET points = 3 WHERE choice_id = 4;

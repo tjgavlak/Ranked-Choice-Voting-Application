@@ -14,6 +14,7 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 
 // new shit
 const currentIssue = localStorage.getItem('issue');
+const currentChoice = localStorage.getItem('choice');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -25,7 +26,8 @@ export default new Vuex.Store({
     user: currentUser || {},
 
     // new shit
-    issue: currentIssue || ''
+    issue: currentIssue || {},
+    choice: currentChoice || {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -49,6 +51,10 @@ export default new Vuex.Store({
     ADD_ISSUE(state, issue) {
       state.issue = issue;
       localStorage.setItem('issue', issue);
+    },
+    ADD_CHOICE(state, choice) {
+      state.choice = choice;
+      localStorage.setItem('choice', choice);
     }
   }
 })

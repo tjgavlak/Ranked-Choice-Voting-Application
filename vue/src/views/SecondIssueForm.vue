@@ -6,7 +6,7 @@
 import SecondIssueForm from "@/components/SecondIssueForm";
 
 export default {
-    name: "choice-form",
+    name: "choice",
     components: {
         SecondIssueForm
     }
