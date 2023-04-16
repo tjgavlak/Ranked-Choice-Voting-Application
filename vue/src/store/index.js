@@ -64,12 +64,16 @@ export default new Vuex.Store({
     ADD_CHOICE(state, option) {
       state.option = option;
       localStorage.setItem('option', option);
+    },
+    GET_LATEST_ID(state, id) {
+      state.latest = id;
     }
   },
   actions: {
-    getTheId(){
-      this.issuesService.mostRecentIssueId()
+    getTheId({commit}){
+      IssuesService.mostRecentIssueId().then(id =>{
+        commit("GET_LATEST_ID", id)
+      })
     }
-
   },
 })
