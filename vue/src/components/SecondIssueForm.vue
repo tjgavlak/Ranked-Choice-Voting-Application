@@ -18,11 +18,12 @@
 
 <script>
 import issuesService from "@/services/IssuesService";
+// import index from '../store/index'
 
 export default {
     name: "choice",
     props: {
-        proposal: Object
+        proposal: Object,
     },
     created(){
         // this.$route.params.proposal
@@ -32,7 +33,7 @@ export default {
         return {
             option: {
                 choiceId: "",
-                issueId: "{{recentId}}",
+                issueId: this.$store.currentIssue.issueId,
                 choice: "",
                 points: ""
             }

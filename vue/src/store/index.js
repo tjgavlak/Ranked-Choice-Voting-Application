@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import IssuesService from '../services/IssuesService'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,7 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 
 // new shit
 const currentIssue = localStorage.getItem('issue');
-const currentChoice = localStorage.getItem('choice');
+const currentChoice = localStorage.getItem('option');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -22,12 +23,20 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    latest: null,
     token: currentToken || '',
     user: currentUser || {},
 
     // new shit
-    issue: currentIssue || {},
-    choice: currentChoice || {}
+    issue: currentIssue || {
+      issueId: "",
+      issueName: "",
+      description: "",
+      dateExpiration: "",
+      timeExpiration: "",
+      genreTag: "",
+    },
+    option: currentChoice || {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -52,9 +61,15 @@ export default new Vuex.Store({
       state.issue = issue;
       localStorage.setItem('issue', issue);
     },
-    ADD_CHOICE(state, choice) {
-      state.choice = choice;
-      localStorage.setItem('choice', choice);
+    ADD_CHOICE(state, option) {
+      state.option = option;
+      localStorage.setItem('option', option);
     }
-  }
+  },
+  actions: {
+    getTheId(){
+      this.issuesService.mostRecentIssueId()
+    }
+
+  },
 })

@@ -84,7 +84,7 @@ const router = new Router({
       }
     },
     {
-      path: "/issues/choices",
+      path: "/issues/choices/:issueId",
       name: "choice",
       component: SecondIssueForm,
       meta: {
