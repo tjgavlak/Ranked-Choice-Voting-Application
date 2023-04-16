@@ -78,7 +78,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         String sql = "SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         if (rowSet.next()) {
-            issueId = mapRowToIssueDetails(rowSet).getIssueId();
+            issueId = mapRowToIssueId(rowSet).getIssueId();
         }
         return issueId;
     }
@@ -94,6 +94,11 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return success;
     }
 
+    private IssueDetails mapRowToIssueId(SqlRowSet rowSet) {
+        IssueDetails issueDetails = new IssueDetails();
+        issueDetails.setIssueId(rowSet.getInt("issue_id"));
+        return issueDetails;
+    }
 
 
     private IssueDetails mapRowToIssueDetails(SqlRowSet rowSet) {
@@ -104,7 +109,6 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         issueDetails.setDescription(rowSet.getString("description"));
         issueDetails.setDatePosted(rowSet.getTimestamp("date_posted"));
         issueDetails.setDateExpiration(rowSet.getString("expiration_date"));
-        String time = rowSet.getString("expiration_time");
         issueDetails.setTimeExpiration(rowSet.getString("expiration_time"));
         issueDetails.setStatus(rowSet.getString("status"));
         issueDetails.setGenreTag(rowSet.getString("genre_tag"));

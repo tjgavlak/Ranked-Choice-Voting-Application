@@ -15,16 +15,18 @@ export default {
         return http.get(`/issues/${id}`)
     },
     submitIssue(payload) {
-        return http.post(`/issues`, payload)
+        return http.post('/issues', payload)
     },
     submitChoices(payload) {
-        return http.post(`/issues/choices`, payload)
+        return http.post('/issues/choices', payload)
     },
     choiceDetails(id) {
         return http.get(`/issues/${id}/choices`)
     },
     rankedChoices(id){
         return http.get(`/issues/${id}/choices/ranked`)
+    },
+    mostRecentIssueId(){
+        return http.get('issues/recent')
     }
-    
 }

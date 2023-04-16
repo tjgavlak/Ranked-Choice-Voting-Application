@@ -24,6 +24,9 @@ export default {
     props: {
         proposal: Object
     },
+    created(){
+        issuesService.mostRecentIssueId();
+    },
     data() {
         return {
             choice: {

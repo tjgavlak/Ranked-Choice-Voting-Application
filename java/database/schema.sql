@@ -29,9 +29,9 @@ DROP TABLE IF EXISTS choices;
 
 CREATE TABLE choices (
 	choice_id SERIAL PRIMARY KEY,
-	issue_id INT,
+	issue_id INTEGER,
 	choice VARCHAR (100),
-	points INT default 0,
+	points INTEGER default 0,
 	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
 );
 

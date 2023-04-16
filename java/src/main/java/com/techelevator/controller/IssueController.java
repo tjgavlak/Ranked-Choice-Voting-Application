@@ -46,6 +46,11 @@ public class IssueController {
         return this.choiceDao.getAllChoices(issueId);
     }
 
+    @GetMapping("/issues/recent")
+    public int getAllChoicesById() {
+        return this.issueDetailsDao.queryForIssueId();
+    }
+
     @GetMapping("/issues/{issueId}/choices/ranked")
     public List <Choice> getRankedChoices(@PathVariable int issueId) {
         return this.choiceDao.getRankedChoices(issueId);
