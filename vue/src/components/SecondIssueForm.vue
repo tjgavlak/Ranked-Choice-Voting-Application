@@ -10,7 +10,7 @@
         type="text"
         maxlength="100"
         required
-      />
+      />&nbsp;
       <button type="submit">Submit</button>
       </form>
   </div>

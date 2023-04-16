@@ -78,9 +78,11 @@ body {
 }
 
 a {
+  margin-left: 10px;
+  font-family: 'Quicksand', sans-serif;
   color: #333;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 a:hover {
@@ -93,6 +95,7 @@ header {
 }
 
 p {
+  font-family: 'Quicksand', sans-serif;
   color: #333;
   text-indent: 30px;
   margin-top: 0px;
@@ -113,10 +116,15 @@ table {
 }
 
 th {
-  font-size: larger;
+  font-size: 1.5em;
+}
+
+td {
+  font-family: 'Quicksand', sans-serif;
 }
 
 #required {
+  font-family: 'Quicksand', sans-serif;
   color: #333;
   font-size: 0.8em;
   font-style: italic;
@@ -140,7 +148,7 @@ label {
 }
 
 label[for="choice"] {
-  color: #ece6c2;
+  color: #333;
 }
 
 .first-form {
@@ -164,4 +172,15 @@ label[for="choice"] {
   font-size: 2em;
   font-weight: bolder;
 }
+
+.form-input-group {
+  margin-bottom: 1rem;
+}
+
+button[type=submit] {
+  margin-top: 35px;
+  margin-left: 10px;
+  color: #333;
+}
+
 </style>

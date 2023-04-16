@@ -9,7 +9,7 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Username</label>&nbsp;
         <input
           type="text"
           id="username"
@@ -19,7 +19,7 @@
         />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password</label>&nbsp;
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <br /><br />
@@ -69,20 +69,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.form-input-group {
-  margin-bottom: 1rem;
-}
-label {
-  margin-right: 0.5rem;
-  color: #ece6c2;
-}
-
-h1 {
-  color: #ece6c2;
-}
-
-a {
-  font-size: 0.8em;
-}
-</style>

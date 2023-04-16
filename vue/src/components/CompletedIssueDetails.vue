@@ -78,7 +78,6 @@ export default {
       const formatted = month + "/" + day + "/" + year;
       return formatted;
     },
-    //
   },
 };
 </script>
