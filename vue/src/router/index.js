@@ -11,6 +11,7 @@ import ProposeIssue from '../views/ProposeIssue.vue'
 import SecondIssueForm from '../views/SecondIssueForm.vue'
 import CompletedIssues from '../views/CompletedIssues.vue'
 import CompletedIssueDetails from '../views/CompletedIssueDetails.vue'
+import PostedIssue from '../views/PostedIssue.vue'
 
 Vue.use(Router)
 
@@ -107,6 +108,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/issues/choices",
+      name: "posted-issue",
+      component: PostedIssue,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 

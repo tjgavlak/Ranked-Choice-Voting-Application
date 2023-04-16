@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link
-      ><span class="pipe">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'home' }">Home </router-link
+      ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'active-issues' }"
-        >Active Issues</router-link
-      ><span class="pipe">&nbsp;|&nbsp;</span>
+        >Active Issues </router-link
+      ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'completed-issues' }"
-        >Past Issues</router-link
-      ><span class="pipe">&nbsp;|&nbsp;</span>
+        >Past Issues </router-link
+      ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'proposal-form' }"
-        >Post an Issue</router-link
-      ><span class="pipe">&nbsp;|&nbsp;</span>
+        >Post an Issue </router-link
+      ><span class="pipe">&nbsp;|</span>
       <!--CHANGE THIS WHEN REFACTORING -->
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
         >Login</router-link
@@ -147,10 +147,6 @@ label {
   font-weight: bold;
 }
 
-label[for="choice"] {
-  color: #333;
-}
-
 .first-form {
   margin-top: 120px;
 }
@@ -171,6 +167,7 @@ label[for="choice"] {
   color: #758c33;
   font-size: 2em;
   font-weight: bolder;
+  font-style: italic;
 }
 
 .form-input-group {

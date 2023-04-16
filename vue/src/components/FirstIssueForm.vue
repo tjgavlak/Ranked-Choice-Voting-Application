@@ -72,7 +72,7 @@ export default {
         timeExpiration: "",
         genreTag: "",
       }
-      this.$router.push('/issues/choices/');
+      this.$router.push('/issues/choices');
     },
     // viewChoices(id) {
     //   this.$router.push(`/issues/choices/${id}`);

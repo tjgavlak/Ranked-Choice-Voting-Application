@@ -18,7 +18,6 @@
 
 <script>
 import issuesService from "@/services/IssuesService";
-// import index from '../store/index'
 
 export default {
     name: "choice",
@@ -26,14 +25,15 @@ export default {
         proposal: Object,
     },
     created(){
-        // this.$route.params.proposal
-        // issuesService.mostRecentIssueId();
+        issuesService.details(this.$route.params.issueId).then((response) => {
+      this.issue = response.data;
+    });
     },
     data() {
         return {
             option: {
                 choiceId: "",
-                issueId: this.$store.currentIssue.issueId,
+                issueId: this.$route.params.issueId,
                 choice: "",
                 points: ""
             }

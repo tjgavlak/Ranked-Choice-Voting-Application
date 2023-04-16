@@ -9,7 +9,7 @@ public interface IssueDetailsDao {
     List<IssueDetails> getAllActiveIssues();
     IssueDetails getIssueById(int issueId);
     boolean postIssue(IssueDetails issue);
-    int queryForIssueId();
+    IssueDetails queryForIssueId();
 
     boolean updateChoices(String choiceString); //nicole, we shall return to this!
 }

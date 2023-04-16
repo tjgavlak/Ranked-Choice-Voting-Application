@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import IssuesService from '../services/IssuesService'
+import issuesServiceModule from './issuesServiceModule'
 
 Vue.use(Vuex)
 
@@ -22,6 +22,9 @@ if(currentToken != null) {
 }
 
 export default new Vuex.Store({
+  modules: {
+    IssuesService: issuesServiceModule
+  },
   state: {
     latest: null,
     token: currentToken || '',
@@ -69,11 +72,11 @@ export default new Vuex.Store({
       state.latest = id;
     }
   },
-  actions: {
-    getTheId({commit}){
-      IssuesService.mostRecentIssueId().then(id =>{
-        commit("GET_LATEST_ID", id)
-      })
-    }
-  },
+  // actions: {
+  //   getTheId({commit}){
+  //     IssuesService.mostRecentIssueId().then(id =>{
+  //       commit("GET_LATEST_ID", id)
+  //     })
+  //   }
+  // },
 })

@@ -33,7 +33,6 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
 
     @Override
     public boolean postIssue(IssueDetails issue) {
-        IssueDetails results = new IssueDetails();
         String sql = "INSERT INTO issues " +
                 "(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag) " +
                 "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), ?, ?, 'active', ?);";
@@ -43,7 +42,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
             return false;
         }
         return true;
-    };
+    }
 
 
     @Override
@@ -73,14 +72,14 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
 
 
     @Override
-    public int queryForIssueId() {
-        int issueId = 0;
-        String sql = "SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;";
+    public IssueDetails queryForIssueId() {
+        IssueDetails postedIssue = new IssueDetails();
+        String sql = "SELECT issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag FROM issues ORDER BY issue_id DESC LIMIT 1;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         if (rowSet.next()) {
-            issueId = mapRowToIssueId(rowSet).getIssueId();
+            postedIssue = mapRowToIssueDetails(rowSet);
         }
-        return issueId;
+        return postedIssue;
     }
 
 

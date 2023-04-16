@@ -26,7 +26,7 @@ export default {
     rankedChoices(id){
         return http.get(`/issues/${id}/choices/ranked`)
     },
-    mostRecentIssueId(){
+    mostRecentIssue(){
         return http.get('issues/recent')
     }
 }
