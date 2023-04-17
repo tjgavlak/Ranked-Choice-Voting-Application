@@ -50,7 +50,7 @@ export default {
       },
     };
   },
-  created() {
+  mounted() {
     issuesService.mostRecentIssue().then((response) => {
       this.issue = response.data;
       console.log(this.issue);

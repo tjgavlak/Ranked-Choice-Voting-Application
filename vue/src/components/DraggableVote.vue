@@ -4,7 +4,7 @@
     <draggable class="list-group" :list="allChoices" group="people" @change="log">
       <div
         class="list-group-item"
-        v-for="choice in allChoices"
+        v-for="(choice) in allChoices"
         :key="choice.choiceId"
       >
         {{ choice.choice }}
@@ -14,13 +14,14 @@
     <draggable class="list-group" :list="topChoices" group="people" @change="log">
       <div
         class="list-group-item"
-        v-for="choice in topChoices"
+        v-for="(choice) in topChoices"
         :key="choice.choiceId"
       >
        {{ choice.choice }}
+       <!-- ask david about this -->
       </div>
     </draggable>
-    <button @click=""></button>
+    <button>VOTE BUTTON</button>
   </div>
 </template>
 
@@ -64,7 +65,7 @@ export default {
   },
   methods: {
     submitVotes() {
-      const data = {item:this.topChoices};
+      // const data = {item:this.topChoices};
       
     }
   }
@@ -82,5 +83,6 @@ export default {
   border: 1px solid red;
   margin: 5px 10px;
   padding: 5px 10px;
+  min-width: 50px;
 }
 </style>

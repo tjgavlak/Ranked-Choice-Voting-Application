@@ -42,7 +42,7 @@ public class IssueController {
     }
 
     @GetMapping("/issues/{issueId}/choices")
-    public List <Choice> getAllChoicesById(@PathVariable int issueId) {
+    public List<Choice> getAllChoicesById(@PathVariable int issueId) {
         return this.choiceDao.getAllChoices(issueId);
     }
 
@@ -52,7 +52,7 @@ public class IssueController {
     }
 
     @GetMapping("/issues/{issueId}/choices/ranked")
-    public List <Choice> getRankedChoices(@PathVariable int issueId) {
+    public List<Choice> getRankedChoices(@PathVariable int issueId) {
         return this.choiceDao.getRankedChoices(issueId);
     }
 
@@ -69,6 +69,9 @@ public class IssueController {
     }
 
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
-    @PutMapping("/issues/ballot")
-    public boolean userBallot(@RequestParam int choice1, int choice2, int choice3)
+    @PutMapping("/issues/ballot/{issueId}")
+    public boolean userBallot( @PathVariable int issueId, int choiceId1, int choiceId2, int choiceId3) {
+        return (choiceDao.userBallot(issueId, choiceId1, choiceId2, choiceId3));
+    }
+
 }

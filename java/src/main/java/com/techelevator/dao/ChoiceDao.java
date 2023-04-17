@@ -12,5 +12,5 @@ public interface ChoiceDao {
 
     List<Choice> getRankedChoices(int issueId);
 
-    void userBallot(int choiceId1, int choiceId2, int choiceId3);
+    boolean userBallot(int issueId, int choiceId1, int choiceId2, int choiceId3);
 }
