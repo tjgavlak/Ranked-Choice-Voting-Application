@@ -29,7 +29,6 @@
       </tbody>
     </table>
     <router-view />
-    <!-- need to read up on router-view -->
   </div>
 </template>
 

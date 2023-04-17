@@ -136,7 +136,7 @@ h1 {
 }
 
 h2 {
-  color: #333;
+  color: rgb(235, 19, 19);
   font-size: 1em;
   font-weight: normal;
 }
