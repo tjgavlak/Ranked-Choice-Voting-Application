@@ -67,4 +67,8 @@ public class IssueController {
     public boolean addChoices(@RequestBody Choice choice) {
         return choiceDao.postChoice(choice);
     }
+
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    @PutMapping("/issues/ballot")
+    public boolean userBallot(@RequestParam int choice1, int choice2, int choice3)
 }

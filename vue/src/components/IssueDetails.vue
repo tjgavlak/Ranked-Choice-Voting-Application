@@ -5,12 +5,11 @@
     <h5>Date Posted: {{ formatDate(issue.datePosted) }}</h5>
     <h5>Poll Closes: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
     <h5>{{ issue.genreTag }}</h5>
-    <p>ham legos</p>
     <ul v-for="choice in choices" :key="choice.choiceId">
     <li>{{choice.choiceId}} | {{choice.choice}} </li>
     </ul>
    
- <select v-model="choice" name="rank" id="rank">
+ <!-- <select v-model="choice" name="rank" id="rank">
 
         <option v-for="choice in choices" :key="choice"> {{choice.choice}}</option>
        
@@ -19,18 +18,22 @@
       
       <select name="ham" id="ham"> 
         <option value="ham">ham</option>
-      </select>
+      </select> -->
 
-
+  <draggable-vote/>
     
   </div>
 </template>
 
 <script>
 import issuesService from "@/services/IssuesService";
+import DraggableVote from './DraggableVote.vue';
 
 export default {
   name: "issue-details",
+  components: {
+    DraggableVote,
+  },
   data() {
     return {
       issue: "",

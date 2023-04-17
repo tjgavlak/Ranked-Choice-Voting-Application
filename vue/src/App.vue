@@ -136,9 +136,9 @@ h1 {
 }
 
 h2 {
-  color: rgb(235, 19, 19);
+  color: #333;
   font-size: 1em;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 label {

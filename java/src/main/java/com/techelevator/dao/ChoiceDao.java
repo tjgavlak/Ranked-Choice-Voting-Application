@@ -12,9 +12,5 @@ public interface ChoiceDao {
 
     List<Choice> getRankedChoices(int issueId);
 
-    void userFirstPreference(int choiceId);
-
-    void userSecondPreference(int choiceId);
-
-    void userThirdPreference(int choiceId);
+    void userBallot(int choiceId1, int choiceId2, int choiceId3);
 }
