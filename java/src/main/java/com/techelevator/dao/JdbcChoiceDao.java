@@ -57,12 +57,12 @@ public class JdbcChoiceDao implements ChoiceDao {
     }
 
     @Override
-    public boolean userBallot(int issueId, int choiceId1, int choiceId2, int choiceId3) {
+    public boolean userBallot(int issueId, int[] choiceArray) {
         String sql = "UPDATE choices SET points = points + 3 WHERE choice_id = ? AND issue_id = ?; " +
                 "UPDATE choices SET points = points + 2 WHERE choice_id = ? AND issue_id = ?; " +
                 "UPDATE choices SET points = points + 1 WHERE choice_id = ? AND issue_id = ?;";
         try {
-            jdbcTemplate.update(sql, choice.getChoiceId(), choice.getIssueId(), choice.getChoiceId(), choice.getIssueId(), choice.getIssueId(), choice.getIssueId());
+            jdbcTemplate.update(sql, choiceArray[0], issueId, choiceArray[1], issueId, choiceArray[2], issueId);
         } catch (DataAccessException e) {
             return false;
         }

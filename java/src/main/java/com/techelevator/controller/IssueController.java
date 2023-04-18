@@ -74,10 +74,13 @@ public class IssueController {
         return choiceDao.postChoice(choice);
     }
 
+    // This is for voting.
+    // TODO add voting functionality
+    /** This is where we call the choiceDao interface to make the voting thing happen */
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     @PutMapping("/issues/ballot/{issueId}")
-    public boolean userBallot( @PathVariable int issueId, int choiceId1, int choiceId2, int choiceId3) {
-        return (choiceDao.userBallot(issueId, choiceId1, choiceId2, choiceId3));
+    public boolean userBallot( @PathVariable int issueId, @RequestParam  int[] choiceArray) {
+        return (choiceDao.userBallot(issueId, choiceArray));
     }
 
 }

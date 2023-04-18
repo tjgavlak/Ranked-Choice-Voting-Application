@@ -18,7 +18,6 @@
         :key="choice.choiceId"
       >
        {{ choice.choice }}
-       <!-- ask david about this -->
       </div>
     </draggable>
     <button>VOTE BUTTON</button>
@@ -64,7 +63,7 @@ export default {
     });
   },
   methods: {
-    submitVotes() {
+    submitChoices() {
       // const data = {item:this.topChoices};
       
     }
