@@ -31,5 +31,8 @@ export default {
     },
     updateIssue(id, payload) {
         return http.put(`issues/${id}`, payload)
+    },
+    submitBallot(id, payload) {
+        return http.put(`/issues/ballot/${id}`, payload)
     }
 }

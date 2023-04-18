@@ -1,6 +1,6 @@
 <template>
   <div class="full-list">
-    <h1 class="list">List 1</h1>
+    <h3 class="list">Options</h3>
     <draggable class="list-group" :list="allChoices" group="people" >
       <div
         class="list-group-item"
@@ -10,7 +10,7 @@
         {{ choice.choice }}
       </div>
     </draggable>
-    <h1 class="list">List 2</h1>
+    <h3 class="list">Preferences</h3>
     <draggable class="list-group" :list="topChoices" group="people" >
       <div
         class="list-group-item"
@@ -20,7 +20,7 @@
        {{ choice.choice }}
       </div>
     </draggable>
-    <button>VOTE BUTTON</button>
+    <button class="vote" @click="submitChoices()">VOTE!</button>
   </div>
 </template>
 
@@ -54,6 +54,11 @@ export default {
       ],
     };
   },
+  // mounted() {
+  //   if (this.topChoices.length > 3) {
+  //     this.topChoices.splice(3);
+  //   }
+  // },
   created() {
     issuesService.details(this.$route.params.issueId).then((response) => {
       this.issue = response.data;
@@ -62,10 +67,21 @@ export default {
       this.allChoices = response.data;
     });
   },
-  methods: {
+  method: {
     submitChoices() {
-      // const data = {item:this.topChoices};
-      
+      console.log('here')
+        const issueId = this.$route.params.issueId;
+        let ballot = {
+          choice1: this.topChoices[1].choiceId,
+          choice2: this.topChoices[2].choiceId,
+          choice3: this.topChoices[3].choiceId
+        };
+        console.log(ballot);
+      issuesService.submitBallot(issueId, ballot).then((response) => {
+        if (response.data) {
+          alert("YOU DONE GONE VOTED!")
+        } else alert("There has been an error. Please try again later.")
+      })
     }
   }
 };
@@ -79,9 +95,9 @@ export default {
 
 .list-group {
   display: inline-block;
-  border: 1px solid red;
+  border: 1px solid rgb(3, 3, 3);
   margin: 5px 10px;
   padding: 5px 10px;
-  min-width: 50px;
+  min-width: 150px;
 }
 </style>

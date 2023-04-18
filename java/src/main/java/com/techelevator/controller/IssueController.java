@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ChoiceDao;
 import com.techelevator.dao.IssueDetailsDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Ballot;
 import com.techelevator.model.Choice;
 import com.techelevator.model.IssueDetails;
 import org.springframework.http.HttpStatus;
@@ -77,9 +78,10 @@ public class IssueController {
     // This is for voting.
     // TODO add voting functionality
     /** This is where we call the choiceDao interface to make the voting thing happen */
-    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping("/issues/ballot/{issueId}")
-    public boolean userBallot( @PathVariable int issueId, @RequestParam  int[] choiceArray) {
+    public boolean userBallot( @PathVariable int issueId, @RequestBody Ballot ballot) {
+        int[] choiceArray = {ballot.getChoice1(), ballot.getChoice2(), ballot.getChoice3()};
         return (choiceDao.userBallot(issueId, choiceArray));
     }
 

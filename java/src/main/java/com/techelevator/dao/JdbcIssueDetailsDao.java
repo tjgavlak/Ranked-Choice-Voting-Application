@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
     public boolean postIssue(IssueDetails issue) {
         String sql = "INSERT INTO issues " +
                 "(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag) " +
-                "VALUES (?, 1, ?, CURRENT_TIMESTAMP(0), ?, ?, 'active', ?) RETURNING issue_id;";
+                "VALUES (?, ?, ?, CURRENT_TIMESTAMP(0), ?, ?, 'active', ?) RETURNING issue_id;";
         try {
             jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getDateExpiration(), issue.getTimeExpiration(), issue.getGenreTag());
         } catch (DataAccessException e) {

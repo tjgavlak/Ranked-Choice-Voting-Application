@@ -6,6 +6,8 @@ SELECT * FROM choices
 
 SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;
 
+UPDATE choices SET points = points + 1 WHERE choice_id = 13 AND issue_id = 4;
+
 UPDATE choices SET points = points + 3 WHERE choice_id = 1;
 
 SELECT choice, points, choice_id FROM choices WHERE issue_id = 2 ORDER BY points DESC
@@ -41,7 +43,8 @@ VALUES ('May book club', 1, 'Rank what you want to read for next month''s book c
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
-VALUES ('Park amenities', 1, 'Rank what you want at the park', '2023-04-10 11:30:00', NULL, '2023-04-29 11:30:00', 'active', 'genre_3');
+VALUES ('Park amenities', 1, 'Rank what you want at the park', '2023-04-10 11:30:00', NULL, '2023-04-29 11:30:00', 'active', 'genre_3') RETURNING issue_id;
+
 
 DROP TABLE IF EXISTS issues;
 

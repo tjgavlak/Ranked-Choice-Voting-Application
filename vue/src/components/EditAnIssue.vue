@@ -48,7 +48,7 @@ export default {
       proposals: [],
       proposal: {
         issueId: "",
-        issueName: 'Rob',
+        issueName: "",
         description: "",
         dateExpiration: "",
         timeExpiration: "",
@@ -58,7 +58,7 @@ export default {
   },
     created() {
     issuesService.details(this.$route.params.issueId).then((response) => {
-      this.issue = response.data;
+      this.proposal = response.data;
     });
   },
   methods: {
