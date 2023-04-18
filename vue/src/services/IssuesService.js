@@ -28,5 +28,8 @@ export default {
     },
     mostRecentIssue(){
         return http.get('issues/recent')
+    },
+    updateIssue(id, payload) {
+        return http.put(`issues/${id}`, payload)
     }
 }

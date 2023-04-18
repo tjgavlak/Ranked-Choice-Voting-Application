@@ -4,6 +4,8 @@ import com.techelevator.model.IssueDetails;
 import java.util.List;
 
 public interface IssueDetailsDao {
+    boolean updateAnIssue(IssueDetails issue);
+
     List<IssueDetails> getAllCompletedIssues();
 
     List<IssueDetails> getAllActiveIssues();

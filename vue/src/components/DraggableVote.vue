@@ -1,7 +1,7 @@
 <template>
   <div class="full-list">
     <h1 class="list">List 1</h1>
-    <draggable class="list-group" :list="allChoices" group="people" @change="log">
+    <draggable class="list-group" :list="allChoices" group="people" >
       <div
         class="list-group-item"
         v-for="(choice) in allChoices"
@@ -11,7 +11,7 @@
       </div>
     </draggable>
     <h1 class="list">List 2</h1>
-    <draggable class="list-group" :list="topChoices" group="people" @change="log">
+    <draggable class="list-group" :list="topChoices" group="people" >
       <div
         class="list-group-item"
         v-for="(choice) in topChoices"

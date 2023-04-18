@@ -22,10 +22,10 @@ export default {
   props: {
     proposal: Object,
   },
-  mounted() {
+  async mounted() {
     issuesService.details(this.$route.params.issueId).then((response) => {
       this.issue = response.data;
-    }),
+    })
     issuesService.choiceDetails(this.$route.params.issueId).then((response) => {
       this.choices = response.data;
   })

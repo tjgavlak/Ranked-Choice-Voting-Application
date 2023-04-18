@@ -14,6 +14,7 @@ import java.util.List;
 public class JdbcChoiceDao implements ChoiceDao {
 
     private JdbcTemplate jdbcTemplate;
+    Choice choice;
 
     public JdbcChoiceDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -61,7 +62,7 @@ public class JdbcChoiceDao implements ChoiceDao {
                 "UPDATE choices SET points = points + 2 WHERE choice_id = ? AND issue_id = ?; " +
                 "UPDATE choices SET points = points + 1 WHERE choice_id = ? AND issue_id = ?;";
         try {
-            jdbcTemplate.update(sql, choiceId1, issueId, choiceId2, issueId, choiceId3, issueId);
+            jdbcTemplate.update(sql, choice.getChoiceId(), choice.getIssueId(), choice.getChoiceId(), choice.getIssueId(), choice.getIssueId(), choice.getIssueId());
         } catch (DataAccessException e) {
             return false;
         }

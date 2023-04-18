@@ -62,6 +62,12 @@ public class IssueController {
         return issueDetailsDao.postIssue(issue);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/issues/{issueId}")
+    public boolean updateAnIssue(@PathVariable int issueId, @RequestBody IssueDetails issue) {
+        return issueDetailsDao.updateAnIssue(issue);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/issues/choices")
     public boolean addChoices(@RequestBody Choice choice) {

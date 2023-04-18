@@ -44,6 +44,18 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return true;
     }
 
+    @Override
+    public boolean updateAnIssue(IssueDetails issue) {
+        String sql = "UPDATE issues " +
+                "SET issue_name = ?, description = ?, expiration_date = ?, expiration_time = ?, genre_tag = ? WHERE issue_id = ?;";
+        try {
+            jdbcTemplate.update(sql, issue.getIssueName(), issue.getDescription(), issue.getDateExpiration(), issue.getTimeExpiration(), issue.getGenreTag(), issue.getIssueId());
+        } catch (DataAccessException e) {
+            return false;
+        }
+        return true;
+    }
+
 
     @Override
     public List<IssueDetails> getAllCompletedIssues() {

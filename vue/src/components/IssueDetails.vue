@@ -5,20 +5,7 @@
     <h5>Date Posted: {{ formatDate(issue.datePosted) }}</h5>
     <h5>Poll Closes: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
     <h5>{{ issue.genreTag }}</h5>
-    <ul v-for="choice in choices" :key="choice.choiceId">
-    <li>{{choice.choiceId}} | {{choice.choice}} </li>
-    </ul>
-   
- <!-- <select v-model="choice" name="rank" id="rank">
-
-        <option v-for="choice in choices" :key="choice"> {{choice.choice}}</option>
-       
-      
-      </select>
-      
-      <select name="ham" id="ham"> 
-        <option value="ham">ham</option>
-      </select> -->
+    <button v-on:click="toEditPage(issue.issueId)" >Edit Issue</button>
 
   <draggable-vote/>
     
@@ -79,7 +66,9 @@ export default {
       const formatted = month + "/" + day + "/" + year;
       return formatted;
     },
-    
+    toEditPage(id){
+      this.$router.push(`/issues/edit/${id}`);
+    }
   }
 };
 </script>
