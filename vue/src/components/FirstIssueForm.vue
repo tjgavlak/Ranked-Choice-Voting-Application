@@ -1,6 +1,6 @@
 <template>
   <div class="proposal-form">
-    <h1>Post a New Issue:</h1>
+    <h1>Post a New Issue</h1>
     <h2>
       This form allows you to create a new issue to be voted on. Name and
       description are required. You may set a poll closing time or leave it

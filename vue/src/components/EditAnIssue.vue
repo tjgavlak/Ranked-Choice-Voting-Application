@@ -1,7 +1,7 @@
 <template>
   <div class="edit-form">
     <h1>Edit Issue:</h1>
-    <br />
+    <!-- <br /> -->
     <form class="first-form" v-on:submit.prevent="saveForm()">
       <label for="issue-name">Issue Name*</label><br />
       <input

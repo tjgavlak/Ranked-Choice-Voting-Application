@@ -1,8 +1,8 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/FTR.png" /></header>
-    <br />
-    <h2>CLOSED POLLS</h2>
+    <!-- <header><img src="@/assets/FTR.png" /></header> -->
+    <!-- <br /> -->
+    <h1>Closed Polls</h1>
     <table>
       <thead>
         <tr>

@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <div class="home">
-      <header><img src="@/assets/FTR.png" /></header>
+      <!-- <header><img src="@/assets/FTR.png" /></header> -->
       <h1>Welcome</h1>
       <p>A ranked-choice voting app that enables community members to submit issues for polling and allows them to vote on these issues using a preferential ballot system. The app provides relevant information about each issue and tallies the results based on the collective preferences of registered voters. This promotes community engagement and ensures that the most important issues are addressed.</p>
     </div>

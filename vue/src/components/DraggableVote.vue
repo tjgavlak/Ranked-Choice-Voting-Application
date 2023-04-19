@@ -1,5 +1,6 @@
 <template>
   <div class="full-list">
+    <h1>Vote</h1>
     <h3 class="list">Options</h3>
     <draggable class="list-group" :list="allChoices" group="people" >
       <div

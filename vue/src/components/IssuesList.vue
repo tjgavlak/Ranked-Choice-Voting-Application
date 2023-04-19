@@ -1,13 +1,14 @@
 <template>
   <div class="active-issues">
-    <header><img src="@/assets/FTR.png" /></header>
-    <br />
+    <!-- <header><img src="@/assets/FTR.png" /></header> -->
+    <!-- <br /> -->
+    <h1>Active Issues</h1>
     <table>
       <thead>
         <tr>
-          <th id="issues">Issues</th>
+          <th id="issues">Issue Name</th>
           &nbsp;
-          <th id="poll-close">Poll Closes</th>
+          <th id="poll-close">Voting Deadline</th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +21,7 @@
             {{ issue.timeExpiration }}
           </td>
           <td class="issue-id">
-            {{ issue.issueId }}
+            <!-- {{ issue.issueId }}  Do we need to display this? -->
           </td>
           <td>
             &nbsp;&nbsp;
