@@ -9,10 +9,13 @@
     <br />
     <div>
       <p class="winner" v-for="choice in choices" :key="choice.choiceId">
-        {{ choice.choiceId }}&nbsp;|
-        {{ choice.choice }}&nbsp;|
-        {{ choice.issueId }}
+        {{ choice.choice }}
+        <!-- {{ ((choice.points/101) * 100).toFixed(0) }}% -->
+        <!-- this would display % of total votes -->
       </p>
+
+
+
     </div>
   </div>
 </template>
@@ -46,7 +49,7 @@ export default {
     formatDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
+        day = "" + (d.getDate() + 1),
         year = d.getFullYear();
 
       if (month.length < 2) month = "0" + month;
@@ -69,7 +72,7 @@ export default {
     formatJustDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
+        day = "" + (d.getDate() + 1),
         year = d.getFullYear();
 
       if (month.length < 2) month = "0" + month;
@@ -79,6 +82,9 @@ export default {
       return formatted;
     },
   },
+    // pointSum(id){
+    //   return issuesService.returnPointSum(id)
+    // }
 };
 </script>
 

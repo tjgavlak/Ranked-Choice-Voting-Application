@@ -7,7 +7,7 @@
         >Active Issues </router-link
       ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'completed-issues' }"
-        >Past Issues </router-link
+        >Vue Results </router-link
       ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'proposal-form' }"
         >Post an Issue </router-link

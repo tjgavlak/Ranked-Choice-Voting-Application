@@ -13,4 +13,6 @@ public interface ChoiceDao {
     List<Choice> getRankedChoices(int issueId);
 
     boolean userBallot(int issueId, int[] choiceArray);
+
+    int pointSum(int issueId);
 }

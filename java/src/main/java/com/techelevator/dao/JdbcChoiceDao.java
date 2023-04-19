@@ -56,6 +56,8 @@ public class JdbcChoiceDao implements ChoiceDao {
         return results;
     }
 
+
+
     @Override
     public boolean userBallot(int issueId, int[] choiceArray) {
         String sql1 = "UPDATE choices SET points = points + 3 WHERE choice_id = ? AND issue_id = ?;";
@@ -69,6 +71,13 @@ public class JdbcChoiceDao implements ChoiceDao {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int pointSum(int issueId) {
+        String sql = "SELECT SUM(points) FROM choices WHERE issue_id = ?;";
+        int sum = jdbcTemplate.queryForObject(sql, Integer.class, issueId);
+        return sum;
     }
 
     private Choice mapRowToChoice(SqlRowSet rowSet) {

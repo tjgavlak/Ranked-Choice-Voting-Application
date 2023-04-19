@@ -85,4 +85,14 @@ public class IssueController {
         return (choiceDao.userBallot(issueId, choiceArray));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/issues/completed/{issueId}")
+    public boolean moveToCompleted(@PathVariable int issueId) {
+        return issueDetailsDao.moveToCompleted(issueId);
+    }
+
+    @GetMapping("/points/{issueId}")
+    public int pointSum(@PathVariable int issueId) {
+        return this.choiceDao.pointSum(issueId);
+    }
 }

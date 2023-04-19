@@ -5,7 +5,8 @@
     <table>
       <thead>
         <tr>
-          <th id="issues">Issues</th>&nbsp;
+          <th id="issues">Issues</th>
+          &nbsp;
           <th id="poll-close">Poll Closes</th>
         </tr>
       </thead>
@@ -23,8 +24,12 @@
           </td>
           <td>
             &nbsp;&nbsp;
-            <button v-on:click="viewIssue(issue.issueId)">Vote!</button>
+            <button v-on:click="viewIssue(issue.issueId)">View Details</button>
           </td>
+          <td>
+            <!-- <p>{{ currentDate() }}</p> -->
+          </td>
+          <td>{{compareDates(issue.dateExpiration, issue.issueId)}}</td>
         </tr>
       </tbody>
     </table>
@@ -54,6 +59,9 @@ export default {
       this.issues = response.data;
     });
   },
+  // mounted() {
+  //   this.compareDates(this.issue.dateExpiration)
+  // },
   methods: {
     loadIssues() {
       issuesService.listActive().then((response) => {
@@ -66,7 +74,7 @@ export default {
     formatDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
+        day = "" + (d.getDate() + 1),
         year = d.getFullYear();
 
       if (month.length < 2) month = "0" + month;
@@ -75,6 +83,28 @@ export default {
       const formatted = month + "/" + day + "/" + year;
       return formatted;
     },
+    currentDate() {
+      const currentDate = new Date();
+      return currentDate;
+    },
+    compareDates(date, id) {
+      const currentDate = new Date(); // get the current date
+      const pollCloseDate = new Date(date); // create another date to compare with
+
+      if (currentDate.getTime() > pollCloseDate.getTime()) {
+        console.log("old poll")
+        issuesService.moveToComplete(id)
+        return("");
+        //put method that updates status to 'completed'
+      } else if (currentDate.getTime() < pollCloseDate.getTime()) {
+        console.log("we gucci")
+        return("");
+        //do nothing
+      } else {
+        return("The current date is the same as the other date.");
+        //do nothing
+      }
+    },
 
     // ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
   },
@@ -82,6 +112,5 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
 

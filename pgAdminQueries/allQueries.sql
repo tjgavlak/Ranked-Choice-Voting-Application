@@ -114,15 +114,30 @@ SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = 1;
 
 SELECT * FROM issues;
 
+UPDATE choices SET points = 80 WHERE choice_id = 7
+
+SELECT SUM(points) FROM choices WHERE issue_id = 2;
+
 SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'pending';
 
 SELECT issue_id, issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag FROM issues WHERE status = 'active';
 
-
+UPDATE issues SET status = 'active' WHERE issue_id = 4;
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_proposed, date_posted, expiration_date, status, genre_tag)
 VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit', CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0) + INTERVAL '2 days', 'active', 'genre_1');
+
+INSERT INTO issues
+(issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
+
+VALUES ('Park amenities budget', 1, 'The township has a budget surplus for the local park and we are looking to allocate the surplus towards something great to give back to the community! Help us decide which amenities you''d like to see added to the park.', CURRENT_TIMESTAMP(0), '2023-12-12', '08:00', 'active', 'community');
+
+INSERT INTO choices (issue_id, choice) VALUES (3, 'Little free library');
+INSERT INTO choices (issue_id, choice) VALUES (3, 'new tire swing');
+INSERT INTO choices (issue_id, choice) VALUES (3, 'new bench');
+INSERT INTO choices (issue_id, choice) VALUES (3, 'more trees');
+INSERT INTO choices (issue_id, choice) VALUES (3, 'disc golf');
 
 
 COMMIT;

@@ -2,6 +2,7 @@
   <div class="active-issues">
     <header><img src="@/assets/FTR.png" /></header>
     <br />
+    <h2>CLOSED POLLS</h2>
     <table>
       <thead>
         <tr>
@@ -67,7 +68,7 @@ export default {
     formatDate(date) {
       let d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
+        day = "" + (d.getDate() + 1),
         year = d.getFullYear();
 
       if (month.length < 2) month = "0" + month;

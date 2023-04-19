@@ -10,6 +10,8 @@ public interface IssueDetailsDao {
 
     boolean updateAnIssue(IssueDetails issue);
 
+    boolean moveToCompleted(int issueId);
+
     List<IssueDetails> getAllCompletedIssues();
 
     List<IssueDetails> getAllActiveIssues();

@@ -11,6 +11,7 @@
     <ul>
       <li v-for="choice in choices" :key="choice.choiceId">{{ choice.choice }}</li>
     </ul>
+    <button v-on:click="sendToList()">GTFO</button>
   </div>
 </template>
 
@@ -58,8 +59,11 @@ export default {
         this.items.push(this.newItem)
         this.newItem = ''
       }
+     },
+      sendToList(){
+        this.$router.push('/issues/active');
+      }
   },
-}
 }
 </script>
 

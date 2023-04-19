@@ -34,5 +34,11 @@ export default {
     },
     submitBallot(id, payload) {
         return http.put(`/issues/ballot/${id}`, payload)
-    }
+    },
+    moveToComplete(id){
+        return http.put(`/issues/completed/${id}`)
+    },
+    // returnPointSum(id){
+    //     return http.get(`/points/${id}`)
+    // }
 }
