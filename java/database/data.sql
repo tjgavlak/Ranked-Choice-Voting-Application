@@ -16,7 +16,7 @@ VALUES ('squirrel party location', 1, 'Dis gonna be a party with no upper limit'
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
-VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), '2023-10-09', '13:00', 'completed', 'genre_2');
+VALUES ('May book club', 1, 'Rank what you want to read for next month''s book club', CURRENT_TIMESTAMP(0), '2023-04-09', '13:00', 'completed', 'genre_2');
 
 INSERT INTO issues
 (issue_name, issue_owner_id, description, date_posted, expiration_date, expiration_time, status, genre_tag)
@@ -39,4 +39,10 @@ INSERT INTO choices (issue_id, choice) VALUES (3, 'disc golf');
 UPDATE choices SET points = 3 WHERE choice_id = 1;
 UPDATE choices SET points = 7 WHERE choice_id = 2;
 UPDATE choices SET points = 10 WHERE choice_id = 3;
+
+UPDATE choices SET points = 20 WHERE choice_id = 4;
+UPDATE choices SET points = 30 WHERE choice_id = 5;
+UPDATE choices SET points = 10 WHERE choice_id = 6;
+UPDATE choices SET points = 15 WHERE choice_id = 7;
+UPDATE choices SET points = 25 WHERE choice_id = 8;
 

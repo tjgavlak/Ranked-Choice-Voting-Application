@@ -38,7 +38,7 @@ export default {
     moveToComplete(id){
         return http.put(`/issues/completed/${id}`)
     },
-    // returnPointSum(id){
-    //     return http.get(`/points/${id}`)
-    // }
+    deleteIssue(id) {
+        return http.delete(`/issues/delete/${id}`)
+    }
 }

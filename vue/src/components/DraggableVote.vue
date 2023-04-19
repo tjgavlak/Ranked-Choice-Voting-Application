@@ -22,6 +22,7 @@
       </div>
     </draggable>
     <button class="vote" @click="submitChoices()">VOTE!</button>
+    <button v-on:click="sendToList()">Back To List</button>
   </div>
 </template>
 
@@ -68,7 +69,7 @@ export default {
       this.allChoices = response.data;
     });
   },
-  method: {
+  methods: {
     submitChoices() {
       console.log('here')
         const issueId = this.$route.params.issueId;
@@ -82,8 +83,11 @@ export default {
         if (response.data) {
           alert("YOU DONE GONE VOTED!")
         } else alert("There has been an error. Please try again later.")
-      })
-    }
+      });
+    },
+    sendToList() {
+      this.$router.push("/issues/active");
+    },
   }
 };
 </script>

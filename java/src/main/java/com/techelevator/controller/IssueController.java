@@ -77,7 +77,7 @@ public class IssueController {
 
     // This is for voting.
     // TODO add voting functionality
-    /** This is where we call the choiceDao interface to make the voting thing happen */
+    /* This is where we call the choiceDao interface to make the voting thing happen */
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/issues/ballot/{issueId}")
     public boolean userBallot( @PathVariable int issueId, @RequestBody Ballot ballot) {
@@ -95,4 +95,11 @@ public class IssueController {
     public int pointSum(@PathVariable int issueId) {
         return this.choiceDao.pointSum(issueId);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/issues/delete/{issueId}")
+    public void deleteIssue(@PathVariable int issueId) {
+        this.issueDetailsDao.deleteIssue(issueId);
+    }
+
 }

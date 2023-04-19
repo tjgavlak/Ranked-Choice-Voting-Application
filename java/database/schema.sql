@@ -32,7 +32,7 @@ CREATE TABLE choices (
 	issue_id INTEGER,
 	choice VARCHAR (100),
 	points INTEGER default 0,
-	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
+	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id) ON DELETE CASCADE
 );
 
 

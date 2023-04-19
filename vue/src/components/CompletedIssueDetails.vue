@@ -9,13 +9,12 @@
     <br />
     <div>
       <p class="winner" v-for="choice in choices" :key="choice.choiceId">
-        {{ choice.choice }}
-        <!-- {{ ((choice.points/101) * 100).toFixed(0) }}% -->
+                {{ choice.choice }}
+        {{ ((choice.points/101) * 100).toFixed(0) }}%
+
+        <!-- {{ pointSum }} -->
         <!-- this would display % of total votes -->
       </p>
-
-
-
     </div>
   </div>
 </template>
@@ -82,14 +81,21 @@ export default {
       return formatted;
     },
   },
-    // pointSum(id){
-    //   return issuesService.returnPointSum(id)
-    // }
+  // computed: {
+  //   pointSum() {
+  //     let sum = this.choices.reduce((total, choice) => {
+  //       return total + choice.points, 0;
+  //     });
+  //     let percentArray = [];
+  //     for (let choice of this.choices) {
+  //       let percent = choice.points - sum + 1;
+  //       percentArray.push({...choice, percent});
+  //     }
+  //     return percentArray;
+  //   },
+  // },
 };
 </script>
 
 <style scoped>
-
-
-
 </style>

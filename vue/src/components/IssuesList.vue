@@ -1,7 +1,5 @@
 <template>
   <div class="active-issues">
-    <!-- <header><img src="@/assets/FTR.png" /></header> -->
-    <!-- <br /> -->
     <h1>Active Issues</h1>
     <table>
       <thead>
@@ -22,6 +20,9 @@
           </td>
           <td class="issue-id">
             <!-- {{ issue.issueId }}  Do we need to display this? -->
+          </td>
+          <td>
+            {{ issue.genreTag }}
           </td>
           <td>
             &nbsp;&nbsp;
@@ -52,6 +53,7 @@ export default {
         description: "",
         dateExpiration: "",
         timeExpiration: "",
+        genreTag: ""
       },
     };
   },
@@ -93,12 +95,10 @@ export default {
       const pollCloseDate = new Date(date); // create another date to compare with
 
       if (currentDate.getTime() > pollCloseDate.getTime()) {
-        console.log("old poll")
         issuesService.moveToComplete(id)
         return("");
         //put method that updates status to 'completed'
       } else if (currentDate.getTime() < pollCloseDate.getTime()) {
-        console.log("we gucci")
         return("");
         //do nothing
       } else {

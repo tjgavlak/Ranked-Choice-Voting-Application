@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
+        <header><img class="logo" src="@/assets/FTR_OffWhite.png" /></header>
+        <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home </router-link
       ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'active-issues' }"
         >Active Issues </router-link
       ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'completed-issues' }"
-        >Vue Results </router-link
+        >View Results </router-link
       ><span class="pipe">&nbsp;|</span>
       <router-link v-bind:to="{ name: 'proposal-form' }"
         >Post an Issue </router-link
@@ -22,7 +23,6 @@
         >Logout</router-link
       >
     </div>
-        <header><img src="@/assets/FTR.png" /></header>
     <router-view />
   </div>
 </template>
@@ -69,7 +69,11 @@ body {
   font-family: "Alegreya Sans", sans-serif;
   font-size: 1.2em;
   height: 100vh;
-  z-index: 12;
+
+}
+
+#nav {
+  padding-top: 10px;
 }
 
 .pipe {
@@ -104,35 +108,10 @@ a:hover {
 header {
   display: flex;
   justify-content: center;
-  background-image: url("assets/download.jpg");
-  background-repeat: no-repeat;
+  background-color: #333;
+  /* background-image: url("assets/cat_row_primary.png"); */
+  /* background-repeat: no-repeat; */
   background-size: cover;
-  /* background-color: #f8f5f1; */
-    background: linear-gradient(
-    to bottom,
-    #dedbd7 0%,
-    #dedbd7 4%,
-    #333333 4%,
-    #333333 4.2%,
-    #f8f5f1 4.2%,
-    #f8f5f1 26.5%,
-    #d00000 26.5%,
-    #d00000 26.7%,
-    #f8f5f1 26.7%,
-    #f8f5f1 27.8%,
-    #3f88c5 27.8%,
-    #3f88c5 28%,
-    #f8f5f1 28%,
-    #f8f5f1 29.2%,
-    #fccc13 29.2%,
-    #fccc13 29.4%,
-    #f8f5f1 29.4%,
-    #f8f5f1 30.5%,
-    #333333 30.5%,
-    #333333 30.7%,
-
-    
-  );
   width: 100vw;
 }
 

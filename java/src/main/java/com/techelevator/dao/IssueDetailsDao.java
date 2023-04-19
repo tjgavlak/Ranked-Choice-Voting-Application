@@ -19,4 +19,6 @@ public interface IssueDetailsDao {
     IssueDetails queryForIssueId();
 
     boolean updateChoices(String choiceString); //nicole, we shall return to this!
+
+    void deleteIssue(int issueId);
 }

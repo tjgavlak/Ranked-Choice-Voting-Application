@@ -27,13 +27,15 @@
 
       <label for="genre">Genre</label><br />
       <select name="genre" id="genre" v-model="proposal.genreTag">
-        <option value="genre1">Genre 1</option>
-        <option value="genre2">Genre 2</option>
-        <option value="genre3">Ham</option></select
+        <option value="genre0">----------</option>
+        <option value="genre1">Parks and Rec</option>
+        <option value="genre2">Education</option>
+        <option value="genre3">Events</option></select
       ><br /><br />
       <span id="required">*Indicates required field</span><br />
       <button type="reset" value="clear">Clear</button>&nbsp;
       <button type="submit" value="save">Update</button>
+      <button type="delete" @click="deleteIssue()">Delete</button>
     </form>
   </div>
 </template>
@@ -56,7 +58,7 @@ export default {
       },
     };
   },
-    created() {
+  created() {
     issuesService.details(this.$route.params.issueId).then((response) => {
       this.proposal = response.data;
     });
@@ -66,17 +68,19 @@ export default {
       issuesService.updateIssue(this.$route.params.issueId, this.proposal);
       this.$router.push("/issues/active");
     },
+    deleteIssue() {
+      if (confirm("Are you sure you want to delete this issue?")) {
+        issuesService
+          .deleteIssue(this.$route.params.issueId)
+          .then((response) => {
+            if (response.status === 200) {
+              alert("Issue Deleted!");
+            } else alert("An error has occurred.");
+            this.$router.go("/issues/active");
+          });
+      }
+    },
   },
-// computed: {
-//     value: {
-//       get() {
-//         return this.proposal
-//       },
-//       set(value) {
-//         this.$emit('update:modelValue', value)
-//       }
-//     }
-// }
 };
 </script>
 

@@ -116,6 +116,12 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return success;
     }
 
+    @Override
+    public void deleteIssue(int issueId) {
+        String sql = "DELETE FROM issues WHERE issue_id = ?;";
+        jdbcTemplate.update(sql, issueId);
+    }
+
     private IssueDetails mapRowToIssueId(SqlRowSet rowSet) {
         IssueDetails issueDetails = new IssueDetails();
         issueDetails.setIssueId(rowSet.getInt("issue_id"));

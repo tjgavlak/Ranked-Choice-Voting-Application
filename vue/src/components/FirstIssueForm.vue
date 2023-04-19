@@ -30,11 +30,17 @@
       <label for="deadline">Poll Closing Time</label><br />
       <input type="date" v-model="proposal.dateExpiration" /> &nbsp; <input type="time" v-model="proposal.timeExpiration" /><br /><br />
 
-      <label for="genre">Genre</label><br />
+      <label for="genre">Tag</label><br />
       <select name="genre" id="genre" v-model="proposal.genreTag">
-        <option value="genre1">Genre 1</option>
-        <option value="genre2">Genre 2</option>
-        <option value="genre3">Ham</option></select
+        <option value="genre0">----------</option>
+        <option value="genre1">Parks and Rec</option>
+        <option value="genre2">Education</option>
+        <option value="genre3">Events</option>
+        <option value="genre"></option>
+        <option value="genre"></option>
+        <option value="genre"></option>
+        
+        </select
       ><br /><br />
       <span id="required">*Indicates required field</span><br />
       <button type="reset" value="clear">Clear</button>&nbsp;
