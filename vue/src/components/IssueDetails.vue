@@ -1,32 +1,41 @@
 <template>
   <div class="issue-details">
-    <p class="instructions">Out of the options given, drag your top three (3) choices into the preferences box, and arrange them by order of preference (most desired on top, least desired on the bottom).</p>
-    <table>
+    <p class="instructions">
+      Ranked Choice Voting allows you to rank your choices from most desired to
+      least. Drag the choices into the second column in order of preference.
+    </p>
+    <table class="issue-details-table">
       <thead>
         <tr>
           <th id="issues">Issue:</th>
           <td>{{ issue.issueName }}</td>
           <th id="description">Description:</th>
           <td>{{ issue.description }}</td>
+        </tr>
+        <tr>
           <th id="date-posted">Date Posted:</th>
           <td>{{ formatDate(issue.datePosted) }}</td>
           <th id="poll-close">Poll Closes:</th>
-          <td>{{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</td>
-          <th id="genre">Genre:</th>
+          <td>
+            {{ formatJustDate(issue.dateExpiration) }} @
+            {{ issue.timeExpiration }}
+          </td>
+        </tr>
+        <tr>
+          <th id="none">Tag:</th>
           <td>{{ issue.genreTag }}</td>
-          </tr>
+          <button v-on:click="toEditPage(issue.issueId)">Edit Issue 📝</button>
+        </tr>
       </thead>
-      </table>
-    <button v-on:click="toEditPage(issue.issueId)">Edit Issue 📝</button>
+    </table>
 
-  <draggable-vote/>
-    
+    <draggable-vote />
   </div>
 </template>
 
 <script>
 import issuesService from "@/services/IssuesService";
-import DraggableVote from './DraggableVote.vue';
+import DraggableVote from "./DraggableVote.vue";
 
 export default {
   name: "issue-details",
@@ -41,8 +50,8 @@ export default {
         choice: "",
         choiceId: "",
         issueId: "",
-        points: ""
-      }
+        points: "",
+      },
     };
   },
   created() {
@@ -51,7 +60,7 @@ export default {
     });
     issuesService.choiceDetails(this.$route.params.issueId).then((response) => {
       this.choices = response.data;
-    })
+    });
   },
   methods: {
     formatDate(date) {
@@ -63,7 +72,18 @@ export default {
       if (month.length < 2) month = "0" + month;
       if (day.length < 2) day = "0" + day;
 
-      const formatted = month + "/" + day + "/" + year + ' @ ' + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      const formatted =
+        month +
+        "/" +
+        day +
+        "/" +
+        year +
+        " @ " +
+        d.toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
       return formatted;
     },
     formatJustDate(date) {
@@ -78,10 +98,10 @@ export default {
       const formatted = month + "/" + day + "/" + year;
       return formatted;
     },
-    toEditPage(id){
+    toEditPage(id) {
       this.$router.push(`/issues/edit/${id}`);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -91,6 +111,4 @@ p {
   margin-top: 25px;
   font-size: 1.2em;
 }
-
-
 </style>

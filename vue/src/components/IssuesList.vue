@@ -5,8 +5,8 @@
       <thead>
         <tr>
           <th id="issues">Issue Name</th>
-          &nbsp;
           <th id="poll-close">Voting Deadline</th>
+          <th>Tag</th>
         </tr>
       </thead>
       <tbody>
@@ -14,8 +14,6 @@
           <td class="issue-name">{{ issue.issueName }}&nbsp;&nbsp;&nbsp;</td>
           <td class="expiration-date">
             &nbsp;&nbsp;&nbsp;{{ formatDate(issue.dateExpiration) }}
-          </td>
-          <td class="expiration-time">
             {{ issue.timeExpiration }}
           </td>
           <td>

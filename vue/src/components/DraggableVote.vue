@@ -1,7 +1,6 @@
 <template>
   <div class="full-list">
-    <h1>Vote</h1>
-    <h3 class="list">Options</h3>
+    <h1 class="list">Options</h1>
     <draggable class="list-group" :list="allChoices" group="people">
       <div
         class="list-group-item"
@@ -11,7 +10,7 @@
         {{ choice.choice }}
       </div>
     </draggable>
-    <h3 class="list">Preferences</h3>
+    <h1 class="list">Preferences</h1>
     <draggable class="list-group" :list="topChoices" group="people">
       <div
         class="list-group-item"
@@ -97,28 +96,7 @@ export default {
 </script>
 
 <style scoped>
-.full-list {
-  display: flex;
-  justify-content: space-evenly;
-}
 
-.list-group {
-  display: inline-block;
-  border: 1px solid rgb(3, 3, 3);
-  margin: 5px 10px;
-  padding: 5px 10px;
-  min-width: 150px;
-
-  /* gradient by nlg */
-  background: linear-gradient(to bottom, #e4e2dd, #f8f5f1);
-  color: #333;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #333;
-}
-.list-group-item:hover {
-  cursor: pointer;
-}
  
 
 </style>

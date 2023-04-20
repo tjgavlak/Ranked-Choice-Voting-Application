@@ -19,13 +19,18 @@ export default {
 <style scoped>
 h1 {
   margin-bottom: 0px;
-  color: #837f79;
-  text-shadow: 2px 2px 0px #fccc13, 4px 4px 0px #3f88c5, 6px 6px 0px #d00000;
+  /* color: #837f79; */
+  text-shadow: 3px 3px 0px #3f88c5, 5px 5px 0px #fccc13, 7px 7px 0px #d00000;
   font-size: 4em;
 }
 h3 {
   text-align: center;
   font-size: 2em;
+}
+p{
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 

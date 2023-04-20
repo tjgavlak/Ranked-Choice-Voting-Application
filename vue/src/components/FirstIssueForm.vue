@@ -92,3 +92,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+p{
+  max-width: 1200px;
+  text-align: center;
+}
+</style>

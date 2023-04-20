@@ -1,16 +1,28 @@
 <template>
   <div class="issue-details">
-    <h2 class="closed">Closed Issue:</h2><p>{{ issue.issueName }}</p>
-    <h2>Description:</h2> <p>{{ issue.description }}
-    <h2>
-      Poll Closed: </h2><p>{{ formatJustDate(issue.dateExpiration) }} @
-      {{ issue.timeExpiration }}</p>
-      <h2>Genre: </h2><p>{{ issue.genreTag }}</p>
-    
+    <table class="completed-issue-details-table">
+      <thead>
+        <tr>
+          <th>Closed Issue:</th>
+          <td>{{ issue.issueName }}</td>
+          <th>Description</th>
+          <td>{{ issue.description }}</td>
+        </tr>
+        <tr>
+          <th>Poll Closed:</th>
+          <td>
+            {{ formatJustDate(issue.dateExpiration) }} @
+            {{ issue.timeExpiration }}
+          </td>
+          <th>Tag:</th>
+          <td>{{ issue.genreTag }}</td>
+        </tr>
+      </thead>
+    </table>
     <br />
     <div class="rank-card">
       <p class="winner" v-for="choice in choices" :key="choice.choiceId">
-                {{ choice.choice }}
+        {{ choice.choice }}
         {{ choice.points }}%
 
         <!-- {{ pointSum }} -->
@@ -99,7 +111,6 @@ export default {
 </script>
 
 <style scoped>
-
 p {
   font-size: 1.1em;
 }
@@ -115,10 +126,12 @@ p {
   margin: 10px;
   border-radius: 5px;
   margin-bottom: 25px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .rank-card:hover {
   box-shadow: #333 0px 0px 30px;
 }
-
 </style>
