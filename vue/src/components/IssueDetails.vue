@@ -5,7 +5,7 @@
     <h5>Date Posted: {{ formatDate(issue.datePosted) }}</h5>
     <h5>Poll Closes: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
     <h5>{{ issue.genreTag }}</h5>
-    <button v-on:click="toEditPage(issue.issueId)" >Edit Issue</button>
+    <button v-on:click="toEditPage(issue.issueId)" >Edit Issue 📝</button>
 
   <draggable-vote/>
     
@@ -72,6 +72,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

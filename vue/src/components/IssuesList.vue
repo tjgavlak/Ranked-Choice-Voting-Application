@@ -26,7 +26,7 @@
           </td>
           <td>
             &nbsp;&nbsp;
-            <button v-on:click="viewIssue(issue.issueId)">View Details</button>
+            <button v-on:click="viewIssue(issue.issueId)">View Details 🔍</button>
           </td>
           <td>
             <!-- <p>{{ currentDate() }}</p> -->

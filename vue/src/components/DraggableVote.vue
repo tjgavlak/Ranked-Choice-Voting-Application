@@ -2,27 +2,31 @@
   <div class="full-list">
     <h1>Vote</h1>
     <h3 class="list">Options</h3>
-    <draggable class="list-group" :list="allChoices" group="people" >
+    <draggable class="list-group" :list="allChoices" group="people">
       <div
         class="list-group-item"
-        v-for="(choice) in allChoices"
+        v-for="choice in allChoices"
         :key="choice.choiceId"
       >
         {{ choice.choice }}
       </div>
     </draggable>
     <h3 class="list">Preferences</h3>
-    <draggable class="list-group" :list="topChoices" group="people" >
+    <draggable class="list-group" :list="topChoices" group="people">
       <div
         class="list-group-item"
-        v-for="(choice) in topChoices"
+        v-for="choice in topChoices"
         :key="choice.choiceId"
       >
-       {{ choice.choice }}
+        {{ choice.choice }}
       </div>
     </draggable>
-    <button class="vote" @click="submitChoices()">VOTE!</button>
-    <button v-on:click="sendToList()">Back To List</button>
+    <button class="vote-button" @click="submitChoices()">
+      <span class="vote">Vote</span> <span class="ballot-box">🗳️</span>
+    </button>
+    <button v-on:click="sendToList()">
+      Active Issues 📋
+      </button>
   </div>
 </template>
 
@@ -71,31 +75,31 @@ export default {
   },
   methods: {
     submitChoices() {
-      console.log('here')
-        const issueId = this.$route.params.issueId;
-        let ballot = {
-          choice1: this.topChoices[1].choiceId,
-          choice2: this.topChoices[2].choiceId,
-          choice3: this.topChoices[3].choiceId
-        };
-        console.log(ballot);
+      console.log("here");
+      const issueId = this.$route.params.issueId;
+      let ballot = {
+        choice1: this.topChoices[1].choiceId,
+        choice2: this.topChoices[2].choiceId,
+        choice3: this.topChoices[3].choiceId,
+      };
+      console.log(ballot);
       issuesService.submitBallot(issueId, ballot).then((response) => {
         if (response.data) {
-          alert("YOU DONE GONE VOTED!")
-        } else alert("There has been an error. Please try again later.")
+          alert("YOU DONE GONE VOTED!");
+        } else alert("There has been an error. Please try again later.");
       });
     },
     sendToList() {
       this.$router.push("/issues/active");
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 .full-list {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .list-group {

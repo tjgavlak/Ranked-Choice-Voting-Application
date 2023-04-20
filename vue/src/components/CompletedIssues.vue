@@ -24,7 +24,7 @@
           </td>
           <td>
             &nbsp;&nbsp;
-            <button v-on:click="viewIssue(issue.issueId)">Show Results</button>
+            <button v-on:click="viewIssue(issue.issueId)">Show Results 🏅</button>
           </td>
         </tr>
       </tbody>
