@@ -84,7 +84,7 @@ export default {
       console.log(ballot);
       issuesService.submitBallot(issueId, ballot).then((response) => {
         if (response.data) {
-          alert("YOU DONE GONE VOTED!");
+          alert("Your vote has been recorded!");
         } else alert("There has been an error. Please try again later.");
       });
     },

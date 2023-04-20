@@ -23,7 +23,7 @@
     <div class="rank-card">
       <p class="winner" v-for="choice in choices" :key="choice.choiceId">
         {{ choice.choice }}
-        {{ choice.points }}%
+        <!-- {{ choice.points }}% -->
 
         <!-- {{ pointSum }} -->
         <!-- this would display % of total votes -->

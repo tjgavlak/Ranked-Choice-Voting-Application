@@ -1,14 +1,13 @@
 <template>
   <div class="choices-form">
-    <h1>Add Options:</h1>
-    <h2>Here you'll add your choices!</h2>
+    <h1>Add Choices:</h1>
     <form ref="choiceForm" v-on:submit.prevent="saveForm()">
       <label for="option">Choice: </label>
-      <input name="option" type="text" v-model="option.choice" />
+      <input class="choice-input" name="option" type="text" v-model="option.choice" />
       <button type="submit" value="save">Add</button>
     </form>
     <ul>
-      <li v-for="item in items" :key="item.choice">{{ item }}</li>
+      <li class="choice-list" v-for="item in items" :key="item.choice">{{ item }}</li>
     </ul>
     <button v-on:click="sendToList()">Submit</button>
   </div>

@@ -86,6 +86,19 @@ body {
   background-clip: text;
 }
 
+.posted-issue {
+  text-align: center;
+}
+
+.choice-input {
+  margin-right: 10px;
+}
+
+.choice-list {
+  font-family: "Quicksand", sans-serif;
+  list-style-type: circle;
+}
+
 a {
   margin-left: 10px;
   font-family: "Quicksand", sans-serif;

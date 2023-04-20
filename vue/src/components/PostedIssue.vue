@@ -1,7 +1,5 @@
 <template>
   <div class="posted-issue">
-    <h1>TEST</h1>
-    <br />
     <table>
       <thead>
         <tr>
