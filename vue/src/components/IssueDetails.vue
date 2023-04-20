@@ -1,11 +1,23 @@
 <template>
   <div class="issue-details">
-    <h2>Issue: {{ issue.issueName }}</h2>
-    <h4>Description: {{ issue.description }}</h4>
-    <h5>Date Posted: {{ formatDate(issue.datePosted) }}</h5>
-    <h5>Poll Closes: {{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</h5>
-    <h5>{{ issue.genreTag }}</h5>
-    <button v-on:click="toEditPage(issue.issueId)" >Edit Issue 📝</button>
+    <p class="instructions">Out of the options given, drag your top three (3) choices into the preferences box, and arrange them by order of preference (most desired on top, least desired on the bottom).</p>
+    <table>
+      <thead>
+        <tr>
+          <th id="issues">Issue:</th>
+          <td>{{ issue.issueName }}</td>
+          <th id="description">Description:</th>
+          <td>{{ issue.description }}</td>
+          <th id="date-posted">Date Posted:</th>
+          <td>{{ formatDate(issue.datePosted) }}</td>
+          <th id="poll-close">Poll Closes:</th>
+          <td>{{ formatJustDate(issue.dateExpiration) }} @ {{ issue.timeExpiration }}</td>
+          <th id="genre">Genre:</th>
+          <td>{{ issue.genreTag }}</td>
+          </tr>
+      </thead>
+      </table>
+    <button v-on:click="toEditPage(issue.issueId)">Edit Issue 📝</button>
 
   <draggable-vote/>
     
@@ -72,3 +84,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+p {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1.2em;
+}
+
+
+</style>

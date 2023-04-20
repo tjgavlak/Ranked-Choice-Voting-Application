@@ -1,12 +1,12 @@
 <template>
   <div class="proposal-form">
     <h1>Post a New Issue</h1>
-    <h2>
+    <p>
       This form allows you to create a new issue to be voted on! Name and
       description are required. You may set a poll closing time or leave it
       blank and add it at a later date. Your choices can be added on the next
       page.
-    </h2>
+    </p>
     <br />
     <form class="first-form" v-on:submit.prevent="saveForm()">
       <div class="post-name">

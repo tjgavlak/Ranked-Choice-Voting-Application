@@ -18,18 +18,12 @@
           <td class="expiration-time">
             {{ issue.timeExpiration }}
           </td>
-          <td class="issue-id">
-            <!-- {{ issue.issueId }}  Do we need to display this? -->
-          </td>
           <td>
             {{ issue.genreTag }}
           </td>
           <td>
             &nbsp;&nbsp;
             <button v-on:click="viewIssue(issue.issueId)">View Details 🔍</button>
-          </td>
-          <td>
-            <!-- <p>{{ currentDate() }}</p> -->
           </td>
           <td>{{compareDates(issue.dateExpiration, issue.issueId)}}</td>
         </tr>

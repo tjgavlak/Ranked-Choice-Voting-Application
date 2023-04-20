@@ -1,16 +1,17 @@
 <template>
   <div class="issue-details">
-    <h2 class="closed">Closed Issue: {{ issue.issueName }}</h2>
-    <h4>Description: {{ issue.description }}</h4>
-    <h5>
-      Poll Closed: {{ formatJustDate(issue.dateExpiration) }} @
-      {{ issue.timeExpiration }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ issue.genreTag }}
-    </h5>
+    <h2 class="closed">Closed Issue:</h2><p>{{ issue.issueName }}</p>
+    <h2>Description:</h2> <p>{{ issue.description }}
+    <h2>
+      Poll Closed: </h2><p>{{ formatJustDate(issue.dateExpiration) }} @
+      {{ issue.timeExpiration }}</p>
+      <h2>Genre: </h2><p>{{ issue.genreTag }}</p>
+    
     <br />
-    <div>
+    <div class="rank-card">
       <p class="winner" v-for="choice in choices" :key="choice.choiceId">
                 {{ choice.choice }}
-        {{ ((choice.points/101) * 100).toFixed(0) }}%
+        {{ choice.points }}%
 
         <!-- {{ pointSum }} -->
         <!-- this would display % of total votes -->
@@ -98,4 +99,26 @@ export default {
 </script>
 
 <style scoped>
+
+p {
+  font-size: 1.1em;
+}
+.closed {
+  margin-top: 30px;
+}
+
+.rank-card {
+  color: #333;
+  background-color: #f8f5f1;
+  padding: 20px;
+  box-shadow: #333 0px 0px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.rank-card:hover {
+  box-shadow: #333 0px 0px 30px;
+}
+
 </style>

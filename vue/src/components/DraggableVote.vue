@@ -110,13 +110,15 @@ export default {
   min-width: 150px;
 
   /* gradient by nlg */
-  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  background: linear-gradient(to bottom, #e4e2dd, #f8f5f1);
   color: #333;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #333;
 }
-
+.list-group-item:hover {
+  cursor: pointer;
+}
  
 
 </style>

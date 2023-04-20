@@ -45,24 +45,28 @@
 }
 
 body {
-  /* background-color: #dedbd7; */
   font-family: "Alegreya Sans", sans-serif;
   font-size: 1.2em;
   color: #dedbd7;
-  height: 100vh;
   max-width: 100%;
   overflow-x: hidden;
   background: linear-gradient(to bottom, 
   rgba(51,51,51,1) 0%, 
   rgba(71,70,70,1) 30%, 
   rgba(80,79,79,1) 45%, 
-  rgba(118,116,115,1) 70%, 
-  rgba(189,187,183,1) 90%, 
-  rgba(222,219,215,1) 100%) /* This is the gradient in the header (obvs)*/
+  rgba(118,116,115,1) 100%
+  )
 }
 
 #nav {
   padding-left: 20px;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+  #nav {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .pipe {
@@ -97,7 +101,6 @@ a:hover {
 header {
   display: flex;
   justify-content: center;
-  /* background-color: #333; */
   background-size: cover;
   width: 100vw;
 }
@@ -118,6 +121,7 @@ img {
   margin-right: auto;
   margin-bottom: 5px;
   margin-top: 5px;
+  filter: drop-shadow(30px 7px 4px #333);
 }
 
 button {
@@ -220,8 +224,7 @@ input[type=time] {
 
 input {
   margin-left: 5px;
-  /* gradient by nlg */
-  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  background: linear-gradient(to bottom, #b8bdc2, #f8f5f1);
   color: #333;
   padding: 8px;
   border-radius: 5px;
@@ -229,8 +232,7 @@ input {
 }
 
 #genre {
-  /* gradient by nlg */
-  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  background: linear-gradient(to bottom, #b8bdc2, #f8f5f1);
   color: #333;
   padding: 8px;
   border-radius: 5px;
@@ -271,8 +273,7 @@ input {
 textarea {
   width: 300px;
   height: 100px;
-  /* gradient by nlg */
-  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  background: linear-gradient(to bottom, #b8bdc2, #f8f5f1);
   color: #333;
   padding: 8px;
   border-radius: 5px;
@@ -350,14 +351,16 @@ label {
 
 .winner {
   font-size: 1em;
+  color: #333;
+
 }
 
 .winner:first-child {
-  margin-top: 80px;
-  margin-bottom: 15px;
-  border-left: 2px solid #dedbd7;
-  border-width: 10px;
-  color: #dedbd7;
+  border-top: #f8f5f1 5px solid;
+  border-left: 10px solid #b8bdc2;
+  border-bottom: 5px solid #c2c8ce;
+  padding-bottom: 5px;
+  color: #333;
   font-size: 2em;
   font-weight: bolder;
   font-style: italic;

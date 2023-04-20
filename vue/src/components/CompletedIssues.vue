@@ -1,7 +1,5 @@
 <template>
   <div class="active-issues">
-    <!-- <header><img src="@/assets/FTR.png" /></header> -->
-    <!-- <br /> -->
     <h1>Closed Polls</h1>
     <table>
       <thead>
@@ -19,9 +17,6 @@
           <td class="expiration-time">
             {{ issue.timeExpiration }}
           </td>
-          <td class="issue-id">
-            {{ issue.issueId }}
-          </td>
           <td>
             &nbsp;&nbsp;
             <button v-on:click="viewIssue(issue.issueId)">Show Results 🏅</button>
@@ -29,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <router-view /> <!-- need to read up on router-view -->
+    <router-view />
   </div>
 </template>
 
@@ -63,7 +58,6 @@ export default {
     },
     viewIssue(id) {
       this.$router.push(`/issues/completed/${id}`);
-      //TODO todo doesn't work in vscode
     },
     formatDate(date) {
       let d = new Date(date),
