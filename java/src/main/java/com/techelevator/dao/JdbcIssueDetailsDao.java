@@ -5,7 +5,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,8 +91,6 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return results;
     }
 
-
-
     @Override
     public IssueDetails queryForIssueId() {
         IssueDetails postedIssue = new IssueDetails();
@@ -105,12 +102,9 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return postedIssue;
     }
 
-
-
     @Override
     public boolean updateChoices(String choiceString) {
         String[] splitStringArray = choiceString.split(",");
-
         boolean success = false;
         String sql = "UPDATE choices SET choice_1 = ?";
         return success;
@@ -128,7 +122,6 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         return issueDetails;
     }
 
-
     private IssueDetails mapRowToIssueDetails(SqlRowSet rowSet) {
         IssueDetails issueDetails = new IssueDetails();
         issueDetails.setIssueId(rowSet.getInt("issue_id"));
@@ -140,16 +133,6 @@ public class JdbcIssueDetailsDao implements IssueDetailsDao{
         issueDetails.setTimeExpiration(rowSet.getString("expiration_time"));
         issueDetails.setStatus(rowSet.getString("status"));
         issueDetails.setGenreTag(rowSet.getString("genre_tag"));
-//        List<String> choices = new ArrayList<>();
-//        for (int i = 1; i < 10; i++) {
-//            String choice = rowSet.getString("choice_" + i);
-//            if(choice != null) {
-//                choices.add(choice);
-//            } else {
-//                break;
-//            }
-//        }
-       // issueDetails.setChoices(choices);
         return issueDetails;
     }
 }

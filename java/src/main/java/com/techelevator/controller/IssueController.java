@@ -2,22 +2,18 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ChoiceDao;
 import com.techelevator.dao.IssueDetailsDao;
-import com.techelevator.dao.UserDao;
 import com.techelevator.model.Ballot;
 import com.techelevator.model.Choice;
 import com.techelevator.model.IssueDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class IssueController {
-
 
     private IssueDetailsDao issueDetailsDao;
     private ChoiceDao choiceDao;
@@ -75,9 +71,6 @@ public class IssueController {
         return choiceDao.postChoice(choice);
     }
 
-    // This is for voting.
-    // TODO add voting functionality
-    /* This is where we call the choiceDao interface to make the voting thing happen */
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/issues/ballot/{issueId}")
     public boolean userBallot( @PathVariable int issueId, @RequestBody Ballot ballot) {

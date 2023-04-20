@@ -18,7 +18,7 @@ CREATE TABLE issues (
     issue_owner_id INTEGER,
     description VARCHAR(500),
     date_posted TIMESTAMP NULL,
-    expiration_date VARCHAR(20),
+    expiration_date VARCHAR(50),
 	expiration_time VARCHAR(20),
     status VARCHAR(40),
     genre_tag VARCHAR(40),

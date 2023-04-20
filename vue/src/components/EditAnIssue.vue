@@ -39,9 +39,11 @@
         <label for="genre">Tag </label>
         <select name="genre" id="genre" v-model="proposal.genreTag">
           <option value="genre0">----------</option>
-          <option value="Parks and Rec">Parks and Rec</option>
-          <option value="Education">Education</option>
-          <option value="Events">Events</option>
+          <option value="parks and rec">parks and rec</option>
+          <option value="school">school</option>
+          <option value="events">events</option>
+          <option value="community">community</option>
+          <option value="other">other</option>
         </select>
       </div>
       <div class="post-buttons">

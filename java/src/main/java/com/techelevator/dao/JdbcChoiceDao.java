@@ -56,8 +56,6 @@ public class JdbcChoiceDao implements ChoiceDao {
         return results;
     }
 
-
-
     @Override
     public boolean userBallot(int issueId, int[] choiceArray) {
         String sql1 = "UPDATE choices SET points = points + 3 WHERE choice_id = ? AND issue_id = ?;";
