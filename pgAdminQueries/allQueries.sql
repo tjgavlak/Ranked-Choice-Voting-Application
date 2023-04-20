@@ -4,6 +4,9 @@ SELECT * FROM users
 
 SELECT * FROM choices
 
+DELETE FROM issues WHERE issue_id = 3;
+
+
 SELECT issue_id FROM issues ORDER BY issue_id DESC LIMIT 1;
 
 UPDATE choices SET points = points + 1 WHERE choice_id = 13 AND issue_id = 4;
@@ -75,7 +78,7 @@ CREATE TABLE choices (
 	choice_8 VARCHAR (100),
 	choice_9 VARCHAR (100),
 	choice_10 VARCHAR (100),
-	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
+	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id) 
 
 );
 
@@ -87,7 +90,7 @@ CREATE TABLE choices (
 	issue_id INT,
 	choice VARCHAR (100),
 	points INT default 0,
-	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id)
+	CONSTRAINT FK_issue_id FOREIGN KEY(issue_id) REFERENCES issues(issue_id) ON DELETE CASCADE
 );
 
 SELECT i.issue_id, issue_name, issue_owner_id, description, date_posted, expiration_date, status, genre_tag, choices.choice_1, choices.choice_2, choices.choice_3, choices.choice_4, choices.choice_5, choices.choice_6, choices.choice_7, choices.choice_8, choices.choice_9, choices.choice_10 FROM issues AS i JOIN choices ON i.issue_id = choices.issue_id WHERE i.issue_id = 1;
@@ -114,7 +117,11 @@ SELECT issue_id, choice_id, choice, points FROM choices WHERE issue_id = 1;
 
 SELECT * FROM issues;
 
-UPDATE choices SET points = 80 WHERE choice_id = 7
+UPDATE choices SET points = 20 WHERE choice_id = 4;
+UPDATE choices SET points = 15 WHERE choice_id = 5;
+UPDATE choices SET points = 5 WHERE choice_id = 6;
+UPDATE choices SET points = 40 WHERE choice_id = 7;
+UPDATE choices SET points = 40 WHERE choice_id = 8;
 
 SELECT SUM(points) FROM choices WHERE issue_id = 2;
 
