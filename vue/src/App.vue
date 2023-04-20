@@ -45,16 +45,24 @@
 }
 
 body {
-  background-color: #dedbd7;
+  /* background-color: #dedbd7; */
   font-family: "Alegreya Sans", sans-serif;
   font-size: 1.2em;
+  color: #dedbd7;
   height: 100vh;
   max-width: 100%;
   overflow-x: hidden;
+  background: linear-gradient(to bottom, 
+  rgba(51,51,51,1) 0%, 
+  rgba(71,70,70,1) 30%, 
+  rgba(80,79,79,1) 45%, 
+  rgba(118,116,115,1) 70%, 
+  rgba(189,187,183,1) 90%, 
+  rgba(222,219,215,1) 100%) /* This is the gradient in the header (obvs)*/
 }
 
 #nav {
-  padding-top: 10px;
+  padding-left: 20px;
 }
 
 .pipe {
@@ -76,38 +84,39 @@ body {
 a {
   margin-left: 10px;
   font-family: "Quicksand", sans-serif;
-  color: #333;
+  color: #f8f5f1;
   text-decoration: none;
   font-size: 1em;
+  padding: 0 15px;
 }
 
 a:hover {
-  text-shadow: 1px 1px 2px #333;
+  text-shadow: 1px 1px 2px #f8f5f1;
 }
 
 header {
   display: flex;
   justify-content: center;
-  background-color: #333;
+  /* background-color: #333; */
   background-size: cover;
   width: 100vw;
 }
 
 p {
   font-family: "Quicksand", sans-serif;
-  color: #333;
+  color: #dedbd7;
   text-indent: 30px;
   margin-top: 0px;
   margin-left: 1em;
   margin-right: 1em;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 img {
   width: 100vh;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 45px;
+  margin-bottom: 5px;
   margin-top: 5px;
 }
 
@@ -192,7 +201,7 @@ button:focus {
   justify-items:auto;
   align-items: stretch;
   border: 3px solid #333;
-  border-radius: 25px;
+  border-radius: 5px;
   
 }
 
@@ -211,11 +220,25 @@ input[type=time] {
 
 input {
   margin-left: 5px;
+  /* gradient by nlg */
+  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+#genre {
+  /* gradient by nlg */
+  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
 
 .post-buttons {
   grid-area: buttons;
-  color: deeppink;
 }
 
 .post-close {
@@ -248,6 +271,12 @@ input {
 textarea {
   width: 300px;
   height: 100px;
+  /* gradient by nlg */
+  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
 
 @media screen and (max-width: 768px) {
@@ -263,11 +292,11 @@ textarea {
 }
 
 table {
-  color: #333;
+  color: #dedbd7;
   margin-top: 35px;
   padding: 20px;
   border: 3px solid #333;
-  border-radius: 25px;
+  border-radius: 5px;
   justify-content: center;
 }
 
@@ -282,28 +311,28 @@ td {
 
 #required {
   font-family: "Quicksand", sans-serif;
-  color: #333;
+  color: #dedbd7;
   font-size: 0.7em;
   font-style: italic;
   font-weight: bold;
 }
 
 h1 {
-  color: #333;
+  color: #dedbd7;
   font-size: 2em;
   text-align: center;
   margin: 10px;
 }
 
 h2 {
-  color: #333;
+  color: #dedbd7;
   font-size: 1em;
   font-weight: bold;
 }
 
 label {
   text-align: center;
-  color: #333;
+  color: #dedbd7;
   font-size: larger;
   font-weight: bold;
 }
@@ -326,9 +355,9 @@ label {
 .winner:first-child {
   margin-top: 80px;
   margin-bottom: 15px;
-  border-left: 2px solid #333;
+  border-left: 2px solid #dedbd7;
   border-width: 10px;
-  color: #333;
+  color: #dedbd7;
   font-size: 2em;
   font-weight: bolder;
   font-style: italic;

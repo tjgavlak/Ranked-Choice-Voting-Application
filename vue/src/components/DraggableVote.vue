@@ -108,5 +108,15 @@ export default {
   margin: 5px 10px;
   padding: 5px 10px;
   min-width: 150px;
+
+  /* gradient by nlg */
+  background: linear-gradient(to bottom, #ece9e4, #f8f5f1);
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
+
+ 
+
 </style>
